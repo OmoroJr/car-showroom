@@ -1,0 +1,117 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Expense",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "vehicle",
+  "expense_category",
+  "expense_date",
+  "column_break_ve1",
+  "amount",
+  "attachment",
+  "section_break_ve1",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "expense_category",
+   "label": "Expense Category",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Purchase\nTransport\nClearing\nDuty\nRepairs\nService\nTyres\nFuel\nCleaning\nAdvertising\nInspection\nInsurance\nRegistration\nTransfer\nOther"
+  },
+  {
+   "fieldname": "expense_date",
+   "label": "Expense Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_ve1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount",
+   "label": "Amount",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "attachment",
+   "label": "Attachment",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "section_break_ve1",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "sort_field": "expense_date",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Inventory Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Accountant",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Branch Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

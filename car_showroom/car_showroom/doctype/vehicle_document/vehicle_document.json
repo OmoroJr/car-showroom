@@ -1,0 +1,44 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Document",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "document_type",
+  "attachment",
+  "expiry_date",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "label": "Document Type",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "options": "Logbook\nInsurance\nInspection Certificate\nImport Documents\nCustoms Documents\nKRA Documents\nNTSA Documents\nSale Agreement\nHire Purchase Agreement\nOther"
+  },
+  {
+   "fieldname": "attachment",
+   "label": "Attachment",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "expiry_date",
+   "label": "Expiry Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

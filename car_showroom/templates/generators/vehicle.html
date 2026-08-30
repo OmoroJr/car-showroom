@@ -1,0 +1,196 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/car_showroom/css/marketplace.css">
+<div class="cs-page">
+	<div class="cs-detail-grid">
+		<div>
+			<div class="cs-gallery">
+				{% if cover_image %}
+				<img id="cs-main-image" src="{{ cover_image }}" alt="{{ vehicle.make }} {{ vehicle.model }}">
+				{% else %}
+				<img id="cs-main-image" src="/assets/car_showroom/images/placeholder.svg" alt="No photo">
+				{% endif %}
+				{% if vehicle.images and vehicle.images|length > 1 %}
+				<div class="cs-thumbs">
+					{% for img in vehicle.images %}
+					<img src="{{ img.image }}" onclick="document.getElementById('cs-main-image').src=this.src">
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+
+			<h1>{{ vehicle.make }} {{ vehicle.model }} {{ vehicle.variant or "" }} ({{ vehicle.year or "" }})</h1>
+			<p>{{ vehicle.condition or "" }} &middot; Stock #{{ vehicle.stock_number }}</p>
+
+			<table class="cs-spec-table">
+				<tr><td>Mileage</td><td>{{ vehicle.mileage or 0 }} km</td></tr>
+				<tr><td>Body Type</td><td>{{ vehicle.body_type or "-" }}</td></tr>
+				<tr><td>Fuel Type</td><td>{{ vehicle.fuel_type or "-" }}</td></tr>
+				<tr><td>Transmission</td><td>{{ vehicle.transmission or "-" }}</td></tr>
+				<tr><td>Engine Capacity</td><td>{{ vehicle.engine_capacity or "-" }} cc</td></tr>
+				<tr><td>Drive Type</td><td>{{ vehicle.drive_type or "-" }}</td></tr>
+				<tr><td>Colour</td><td>{{ vehicle.colour or "-" }}</td></tr>
+				<tr><td>Seating Capacity</td><td>{{ vehicle.seating_capacity or "-" }}</td></tr>
+			</table>
+
+			{% if similar_vehicles %}
+			<h3>Similar Vehicles</h3>
+			<div class="cs-grid">
+				{% for sv in similar_vehicles %}
+				<a class="cs-card" href="/{{ sv.route }}">
+					<div class="cs-card-body">
+						<p class="cs-card-title">{{ sv.make }} {{ sv.model }} ({{ sv.year }})</p>
+						<p class="cs-card-price">KES {{ "{:,.0f}".format(sv.asking_price or 0) }}</p>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="cs-sidebar">
+			<div class="cs-price-big">KES {{ "{:,.0f}".format(vehicle.asking_price or 0) }}</div>
+			<button class="cs-btn cs-btn-primary" onclick="csOpenModal('cs-financing-modal')">Request Financing</button>
+			<button class="cs-btn cs-btn-accent" onclick="csOpenModal('cs-hp-modal')">Calculate Hire Purchase</button>
+			<button class="cs-btn cs-btn-outline" onclick="csOpenModal('cs-testdrive-modal')">Book Test Drive</button>
+			<button class="cs-btn cs-btn-outline" onclick="csShareWhatsApp()">Share via WhatsApp</button>
+		</div>
+	</div>
+</div>
+
+<!-- Request Financing Modal -->
+<div class="cs-modal-backdrop" id="cs-financing-modal">
+	<div class="cs-modal">
+		<button class="cs-close-btn" onclick="csCloseModal('cs-financing-modal')">&times;</button>
+		<h3>Request Financing</h3>
+		<label>Full Name</label>
+		<input type="text" id="cs-fin-name">
+		<label>Phone</label>
+		<input type="text" id="cs-fin-phone" placeholder="07XXXXXXXX">
+		<label>Email (optional)</label>
+		<input type="email" id="cs-fin-email">
+		<div class="cs-modal-actions">
+			<button class="cs-btn cs-btn-primary" onclick="csSubmitFinancing()">Submit</button>
+		</div>
+		<div id="cs-fin-result"></div>
+	</div>
+</div>
+
+<!-- Book Test Drive Modal -->
+<div class="cs-modal-backdrop" id="cs-testdrive-modal">
+	<div class="cs-modal">
+		<button class="cs-close-btn" onclick="csCloseModal('cs-testdrive-modal')">&times;</button>
+		<h3>Book a Test Drive</h3>
+		<label>Full Name</label>
+		<input type="text" id="cs-td-name">
+		<label>Phone</label>
+		<input type="text" id="cs-td-phone" placeholder="07XXXXXXXX">
+		<label>Preferred Date</label>
+		<input type="date" id="cs-td-date">
+		<div class="cs-modal-actions">
+			<button class="cs-btn cs-btn-primary" onclick="csSubmitTestDrive()">Submit</button>
+		</div>
+		<div id="cs-td-result"></div>
+	</div>
+</div>
+
+<!-- Calculate Hire Purchase Modal -->
+<div class="cs-modal-backdrop" id="cs-hp-modal">
+	<div class="cs-modal">
+		<button class="cs-close-btn" onclick="csCloseModal('cs-hp-modal')">&times;</button>
+		<h3>Hire Purchase Estimate</h3>
+		<label>Deposit (KES)</label>
+		<input type="number" id="cs-hp-deposit" value="{{ ((vehicle.asking_price or 0) * 0.3) | round | int }}">
+		<label>Interest Rate (% per year)</label>
+		<input type="number" id="cs-hp-rate" value="14">
+		<label>Period (months)</label>
+		<input type="number" id="cs-hp-months" value="36">
+		<label>Payment Frequency</label>
+		<select id="cs-hp-frequency">
+			<option value="Monthly">Monthly</option>
+			<option value="Bi-weekly">Bi-weekly</option>
+			<option value="Weekly">Weekly</option>
+		</select>
+		<div class="cs-modal-actions">
+			<button class="cs-btn cs-btn-primary" onclick="csCalculateHP()">Calculate</button>
+		</div>
+		<div id="cs-hp-result"></div>
+	</div>
+</div>
+
+<script>
+const CS_VEHICLE = "{{ vehicle.name }}";
+const CS_VEHICLE_LABEL = "{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year or '' }})";
+const CS_VEHICLE_PRICE = {{ vehicle.asking_price or 0 }};
+
+function csOpenModal(id) { document.getElementById(id).classList.add('cs-open'); }
+function csCloseModal(id) { document.getElementById(id).classList.remove('cs-open'); }
+
+function csSubmitFinancing() {
+	frappe.call({
+		method: "car_showroom.car_showroom.www_api.request_financing",
+		args: {
+			vehicle: CS_VEHICLE,
+			full_name: document.getElementById('cs-fin-name').value,
+			phone: document.getElementById('cs-fin-phone').value,
+			email: document.getElementById('cs-fin-email').value,
+		},
+		callback: function(r) {
+			document.getElementById('cs-fin-result').innerText = r.message ? r.message.message : "Submitted.";
+		}
+	});
+}
+
+function csSubmitTestDrive() {
+	frappe.call({
+		method: "car_showroom.car_showroom.www_api.book_test_drive",
+		args: {
+			vehicle: CS_VEHICLE,
+			full_name: document.getElementById('cs-td-name').value,
+			phone: document.getElementById('cs-td-phone').value,
+			preferred_date: document.getElementById('cs-td-date').value,
+		},
+		callback: function(r) {
+			document.getElementById('cs-td-result').innerText = r.message ? r.message.message : "Submitted.";
+		}
+	});
+}
+
+function csCalculateHP() {
+	frappe.call({
+		method: "car_showroom.car_showroom.www_api.calculate_hp_preview",
+		args: {
+			cash_price: CS_VEHICLE_PRICE,
+			deposit: document.getElementById('cs-hp-deposit').value,
+			interest_rate: document.getElementById('cs-hp-rate').value,
+			period_months: document.getElementById('cs-hp-months').value,
+			frequency: document.getElementById('cs-hp-frequency').value,
+		},
+		callback: function(r) {
+			const d = r.message;
+			if (!d || !d.rows || !d.rows.length) {
+				document.getElementById('cs-hp-result').innerText = "Could not calculate — check your inputs.";
+				return;
+			}
+			const installment = d.rows[0].total;
+			document.getElementById('cs-hp-result').innerHTML = `
+				<div class="cs-hp-result">
+					<div><span>Estimated Installment</span><strong>KES ${installment.toLocaleString()}</strong></div>
+					<div><span>Total Interest</span><strong>KES ${d.total_interest.toLocaleString()}</strong></div>
+					<div><span>Total Payable</span><strong>KES ${d.total_amount_payable.toLocaleString()}</strong></div>
+				</div>
+				<p style="font-size:0.8rem;color:#6B7280;margin-top:8px;">
+					Estimate only — final terms depend on credit assessment.
+				</p>`;
+		}
+	});
+}
+
+function csShareWhatsApp() {
+	const url = window.location.href;
+	const text = `Check out this ${CS_VEHICLE_LABEL} — KES ${CS_VEHICLE_PRICE.toLocaleString()}. ${url}`;
+	window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+}
+</script>
+{% endblock %}

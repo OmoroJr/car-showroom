@@ -1,0 +1,219 @@
+{
+ "doctype": "DocType",
+ "name": "Credit Assessment",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "customer",
+  "hire_purchase_agreement",
+  "assessment_date",
+  "assessed_by",
+  "section_break_ca1",
+  "monthly_income",
+  "other_income",
+  "column_break_ca1",
+  "existing_loan_obligations",
+  "monthly_expenses",
+  "section_break_ca2",
+  "requested_financing_amount",
+  "deposit_offered",
+  "column_break_ca2",
+  "proposed_installment_amount",
+  "section_break_ca3",
+  "debt_to_income_ratio",
+  "installment_to_income_ratio",
+  "column_break_ca3",
+  "credit_score",
+  "risk_rating",
+  "section_break_ca4",
+  "recommendation",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assessment_date",
+   "label": "Assessment Date",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "assessed_by",
+   "label": "Assessed By",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "section_break_ca1",
+   "label": "Income & Obligations",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "monthly_income",
+   "label": "Monthly Income (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "other_income",
+   "label": "Other Income (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_ca1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "existing_loan_obligations",
+   "label": "Existing Loan Obligations (KES/month)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "monthly_expenses",
+   "label": "Monthly Expenses (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_ca2",
+   "label": "Requested Financing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "requested_financing_amount",
+   "label": "Requested Financing Amount (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "deposit_offered",
+   "label": "Deposit Offered (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_ca2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "proposed_installment_amount",
+   "label": "Proposed Installment Amount (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_ca3",
+   "label": "Assessment Result",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "debt_to_income_ratio",
+   "label": "Debt-to-Income Ratio (%)",
+   "fieldtype": "Percent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "installment_to_income_ratio",
+   "label": "Installment-to-Income Ratio (%)",
+   "fieldtype": "Percent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ca3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "credit_score",
+   "label": "Credit Score (0-100)",
+   "fieldtype": "Int",
+   "read_only": 1
+  },
+  {
+   "fieldname": "risk_rating",
+   "label": "Risk Rating",
+   "fieldtype": "Select",
+   "options": "Low\nMedium\nHigh",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_ca4",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "recommendation",
+   "label": "Recommendation",
+   "fieldtype": "Select",
+   "options": "Approve\nApprove with Conditions\nDecline",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "customer",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Credit Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "General Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

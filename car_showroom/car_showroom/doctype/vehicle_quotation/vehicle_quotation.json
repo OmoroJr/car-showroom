@@ -1,0 +1,222 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Quotation",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer",
+  "vehicle",
+  "lead",
+  "salesperson",
+  "branch",
+  "column_break_q1",
+  "quotation_date",
+  "valid_till",
+  "status",
+  "section_break_q1",
+  "selling_price",
+  "discount",
+  "trade_in_allowance",
+  "column_break_q2",
+  "insurance_amount",
+  "transfer_charges",
+  "other_charges",
+  "section_break_q2",
+  "financing_option",
+  "deposit",
+  "column_break_q3",
+  "total_payable",
+  "balance"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "QTN-.YYYY.-.#####",
+   "default": "QTN-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lead",
+   "label": "Lead",
+   "fieldtype": "Link",
+   "options": "Vehicle Lead"
+  },
+  {
+   "fieldname": "salesperson",
+   "label": "Salesperson",
+   "fieldtype": "Link",
+   "options": "Salesperson"
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Dealership Branch"
+  },
+  {
+   "fieldname": "column_break_q1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation_date",
+   "label": "Quotation Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valid_till",
+   "label": "Valid Till",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Draft\nSent\nAccepted\nRejected\nExpired\nConverted",
+   "default": "Draft"
+  },
+  {
+   "fieldname": "section_break_q1",
+   "label": "Pricing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "selling_price",
+   "label": "Selling Price",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount",
+   "label": "Discount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "trade_in_allowance",
+   "label": "Trade-In Allowance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_q2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "insurance_amount",
+   "label": "Insurance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "transfer_charges",
+   "label": "Transfer Charges",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "other_charges",
+   "label": "Other Charges",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_q2",
+   "label": "Financing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "financing_option",
+   "label": "Financing Option",
+   "fieldtype": "Select",
+   "options": "Cash\nBank Financing\nIn-house Hire Purchase"
+  },
+  {
+   "fieldname": "deposit",
+   "label": "Deposit",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_q3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_payable",
+   "label": "Total Payable",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "balance",
+   "label": "Balance",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  }
+ ]
+}

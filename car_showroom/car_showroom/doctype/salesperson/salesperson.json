@@ -1,0 +1,126 @@
+{
+ "doctype": "DocType",
+ "name": "Salesperson",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "salesperson_name",
+  "user",
+  "branch",
+  "column_break_2",
+  "phone",
+  "email",
+  "employee_id",
+  "section_break_2",
+  "commission_rate",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "SP-.#####",
+   "default": "SP-.#####"
+  },
+  {
+   "fieldname": "salesperson_name",
+   "label": "Salesperson Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "user",
+   "label": "User Account",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Dealership Branch",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "label": "Phone",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "email",
+   "label": "Email",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "employee_id",
+   "label": "Employee ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_2",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "commission_rate",
+   "label": "Default Commission Rate (%)",
+   "fieldtype": "Percent"
+  },
+  {
+   "fieldname": "active",
+   "label": "Active",
+   "fieldtype": "Check",
+   "default": "1"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "salesperson_name",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Branch Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

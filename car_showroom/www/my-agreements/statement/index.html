@@ -1,0 +1,49 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/car_showroom/css/marketplace.css">
+<div class="cs-page">
+	<div class="cs-statement-header">
+		<h1>{{ title }}</h1>
+		<button class="cs-btn cs-btn-outline" onclick="window.print()">Print / Save as PDF</button>
+	</div>
+
+	<p>Vehicle: <strong>{{ agreement.vehicle }}</strong> &middot; Status: <strong>{{ agreement.status }}</strong></p>
+	<p>Amount Financed: KES {{ "{:,.0f}".format(agreement.amount_financed or 0) }}
+		&middot; Total Payable: KES {{ "{:,.0f}".format(agreement.total_amount_payable or 0) }}</p>
+
+	<h3>Installment Schedule</h3>
+	<table class="cs-spec-table">
+		<tr><th>Due Date</th><th>Principal</th><th>Interest</th><th>Fees</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr>
+		{% for i in installments %}
+		<tr>
+			<td>{{ frappe.utils.format_date(i.due_date) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.principal or 0) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.interest or 0) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.fees or 0) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.total or 0) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.amount_paid or 0) }}</td>
+			<td>KES {{ "{:,.0f}".format(i.balance or 0) }}</td>
+			<td>{{ i.status }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<h3>Payment History</h3>
+	{% if payments %}
+	<table class="cs-spec-table">
+		<tr><th>Date</th><th>Amount</th><th>Method</th><th>Receipt #</th></tr>
+		{% for p in payments %}
+		<tr>
+			<td>{{ frappe.utils.format_date(p.payment_date) }}</td>
+			<td>KES {{ "{:,.0f}".format(p.amount or 0) }}</td>
+			<td>{{ p.payment_method }}</td>
+			<td>{{ p.receipt_number }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+	<p>No payments recorded yet.</p>
+	{% endif %}
+</div>
+{% endblock %}

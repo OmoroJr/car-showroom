@@ -1,0 +1,182 @@
+/* Car Showroom — public marketplace styling. Mobile-first. */
+
+:root {
+	--cs-navy: #1F3A5F;
+	--cs-navy-dark: #142A45;
+	--cs-accent: #D98E04;
+	--cs-bg: #F5F6F8;
+	--cs-card-bg: #FFFFFF;
+	--cs-border: #E3E6EB;
+	--cs-text: #1C1F26;
+	--cs-muted: #6B7280;
+}
+
+.cs-page {
+	background: var(--cs-bg);
+	color: var(--cs-text);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	padding: 16px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.cs-hero {
+	background: linear-gradient(135deg, var(--cs-navy), var(--cs-navy-dark));
+	color: #fff;
+	border-radius: 12px;
+	padding: 24px;
+	margin-bottom: 20px;
+}
+.cs-hero h1 { margin: 0 0 6px; font-size: 1.5rem; }
+.cs-hero p { margin: 0; opacity: 0.85; }
+
+.cs-filter-form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+	gap: 10px;
+	background: var(--cs-card-bg);
+	border: 1px solid var(--cs-border);
+	border-radius: 10px;
+	padding: 14px;
+	margin-bottom: 20px;
+}
+.cs-filter-form select,
+.cs-filter-form input {
+	width: 100%;
+	padding: 8px 10px;
+	border: 1px solid var(--cs-border);
+	border-radius: 6px;
+	font-size: 0.9rem;
+}
+.cs-filter-form button {
+	grid-column: 1 / -1;
+	background: var(--cs-navy);
+	color: #fff;
+	border: none;
+	padding: 10px;
+	border-radius: 6px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.cs-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 16px;
+}
+
+.cs-card {
+	background: var(--cs-card-bg);
+	border: 1px solid var(--cs-border);
+	border-radius: 10px;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	transition: box-shadow 0.15s ease;
+}
+.cs-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.cs-card img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	background: #eee;
+}
+.cs-card-body { padding: 12px; }
+.cs-card-title { font-weight: 600; margin: 0 0 4px; }
+.cs-card-meta { font-size: 0.85rem; color: var(--cs-muted); margin-bottom: 6px; }
+.cs-card-price { font-weight: 700; color: var(--cs-navy); font-size: 1.05rem; }
+
+.cs-badge {
+	display: inline-block;
+	background: var(--cs-accent);
+	color: #fff;
+	font-size: 0.7rem;
+	font-weight: 700;
+	padding: 2px 8px;
+	border-radius: 999px;
+	margin-bottom: 6px;
+}
+
+.cs-detail-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+@media (min-width: 800px) {
+	.cs-detail-grid { grid-template-columns: 1.3fr 1fr; }
+}
+
+.cs-gallery img {
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 8px;
+}
+.cs-thumbs { display: flex; gap: 6px; overflow-x: auto; }
+.cs-thumbs img {
+	width: 70px; height: 50px; object-fit: cover; border-radius: 6px; flex: none;
+}
+
+.cs-spec-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+.cs-spec-table td { padding: 6px 4px; border-bottom: 1px solid var(--cs-border); font-size: 0.9rem; }
+.cs-spec-table td:first-child { color: var(--cs-muted); width: 45%; }
+
+.cs-sidebar {
+	background: var(--cs-card-bg);
+	border: 1px solid var(--cs-border);
+	border-radius: 10px;
+	padding: 16px;
+	align-self: start;
+	position: sticky;
+	top: 16px;
+}
+.cs-price-big { font-size: 1.6rem; font-weight: 800; color: var(--cs-navy); margin: 4px 0 14px; }
+
+.cs-btn {
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 12px;
+	border-radius: 8px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 10px;
+	font-size: 0.95rem;
+}
+.cs-btn-primary { background: var(--cs-navy); color: #fff; }
+.cs-btn-accent { background: var(--cs-accent); color: #fff; }
+.cs-btn-outline { background: #fff; color: var(--cs-navy); border: 1px solid var(--cs-navy); }
+
+.cs-modal-backdrop {
+	display: none;
+	position: fixed; inset: 0;
+	background: rgba(0,0,0,0.5);
+	z-index: 999;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+}
+.cs-modal-backdrop.cs-open { display: flex; }
+.cs-modal {
+	background: #fff;
+	border-radius: 10px;
+	padding: 20px;
+	max-width: 420px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+.cs-modal h3 { margin-top: 0; }
+.cs-modal label { display: block; font-size: 0.85rem; margin: 10px 0 4px; color: var(--cs-muted); }
+.cs-modal input, .cs-modal select {
+	width: 100%; padding: 8px; border: 1px solid var(--cs-border); border-radius: 6px;
+}
+.cs-modal .cs-modal-actions { display: flex; gap: 8px; margin-top: 16px; }
+.cs-modal .cs-modal-actions button { flex: 1; }
+.cs-close-btn { background: none; border: none; float: right; font-size: 1.2rem; cursor: pointer; }
+
+.cs-hp-result { background: var(--cs-bg); border-radius: 8px; padding: 12px; margin-top: 10px; font-size: 0.9rem; }
+.cs-hp-result div { display: flex; justify-content: space-between; padding: 3px 0; }
+
+.cs-empty { text-align: center; padding: 40px 20px; color: var(--cs-muted); }

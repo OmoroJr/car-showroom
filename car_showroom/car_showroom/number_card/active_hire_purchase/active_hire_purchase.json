@@ -1,0 +1,14 @@
+{
+ "doctype": "Number Card",
+ "name": "Active Hire Purchase",
+ "label": "Active Hire Purchase",
+ "document_type": "Hire Purchase Agreement",
+ "type": "Document Type",
+ "function": "Count",
+ "is_public": 1,
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Daily",
+ "module": "Car Showroom",
+ "color": "#1F3A5F",
+ "filters_json": "[[\"Hire Purchase Agreement\", \"status\", \"=\", \"Active\"]]"
+}

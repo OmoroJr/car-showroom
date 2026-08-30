@@ -1,0 +1,136 @@
+{
+ "doctype": "DocType",
+ "name": "M-Pesa Settings",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 1,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "environment",
+  "business_shortcode",
+  "column_break_ms1",
+  "consumer_key",
+  "consumer_secret",
+  "section_break_ms1",
+  "passkey",
+  "callback_base_url",
+  "column_break_ms2",
+  "transaction_type",
+  "account_reference_prefix",
+  "section_break_ms2",
+  "c2b_validation_url",
+  "c2b_confirmation_url",
+  "enabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "environment",
+   "label": "Environment",
+   "fieldtype": "Select",
+   "options": "Sandbox\nProduction",
+   "default": "Sandbox",
+   "reqd": 1
+  },
+  {
+   "fieldname": "business_shortcode",
+   "label": "Business Shortcode (Paybill/Till)",
+   "fieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ms1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consumer_key",
+   "label": "Consumer Key",
+   "fieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "consumer_secret",
+   "label": "Consumer Secret",
+   "fieldtype": "Password",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ms1",
+   "label": "STK Push",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "passkey",
+   "label": "Lipa na M-Pesa Online Passkey",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "callback_base_url",
+   "label": "Callback Base URL",
+   "fieldtype": "Data",
+   "description": "Your site's public URL, e.g. https://showroom.example.com - callbacks are received at <this>/api/method/car_showroom.car_showroom.mpesa.stk_callback"
+  },
+  {
+   "fieldname": "column_break_ms2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_type",
+   "label": "Transaction Type",
+   "fieldtype": "Select",
+   "options": "CustomerPayBillOnline\nCustomerBuyGoodsOnline",
+   "default": "CustomerPayBillOnline"
+  },
+  {
+   "fieldname": "account_reference_prefix",
+   "label": "Account Reference Prefix",
+   "fieldtype": "Data",
+   "default": "CARSHOWROOM"
+  },
+  {
+   "fieldname": "section_break_ms2",
+   "label": "C2B (Paybill / Till direct payments)",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "c2b_validation_url",
+   "label": "C2B Validation URL",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "description": "Register this with Safaricom: <site>/api/method/car_showroom.car_showroom.mpesa.c2b_validation"
+  },
+  {
+   "fieldname": "c2b_confirmation_url",
+   "label": "C2B Confirmation URL",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "description": "Register this with Safaricom: <site>/api/method/car_showroom.car_showroom.mpesa.c2b_confirmation"
+  },
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": "0"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ]
+}

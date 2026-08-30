@@ -1,0 +1,44 @@
+{
+ "doctype": "DocType",
+ "name": "Hire Purchase Payment Allocation",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "installment",
+  "due_date",
+  "allocated_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "installment",
+   "label": "Installment",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Installment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "due_date",
+   "label": "Due Date",
+   "fieldtype": "Date",
+   "fetch_from": "installment.due_date",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "allocated_amount",
+   "label": "Allocated Amount",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

@@ -1,0 +1,11 @@
+{
+ "doctype": "Report",
+ "name": "Sales Summary",
+ "report_name": "Sales Summary",
+ "module": "Car Showroom",
+ "ref_doctype": "Vehicle Sale",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "disabled": 0,
+ "letter_head": null
+}

@@ -1,0 +1,338 @@
+{
+ "doctype": "DocType",
+ "name": "Hire Purchase Agreement",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer",
+  "vehicle",
+  "vehicle_sale",
+  "credit_assessment",
+  "column_break_hpa1",
+  "branch",
+  "salesperson",
+  "start_date",
+  "section_break_hpa1",
+  "cash_price",
+  "deposit",
+  "amount_financed",
+  "column_break_hpa2",
+  "interest_rate",
+  "interest_calculation_method",
+  "column_break_hpa3",
+  "processing_fee",
+  "insurance",
+  "other_charges",
+  "section_break_hpa2",
+  "financing_period_months",
+  "number_of_installments",
+  "installment_frequency",
+  "column_break_hpa4",
+  "first_installment_date",
+  "total_interest",
+  "total_amount_payable",
+  "installment_amount",
+  "final_installment",
+  "section_break_hpa3",
+  "required_approver_role",
+  "approval_log",
+  "section_break_hpa4",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "HPA-.YYYY.-.#####",
+   "default": "HPA-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle_sale",
+   "label": "Vehicle Sale",
+   "fieldtype": "Link",
+   "options": "Vehicle Sale",
+   "description": "Link the Vehicle Sale (sale type: In-house Hire Purchase) before activating this agreement"
+  },
+  {
+   "fieldname": "credit_assessment",
+   "label": "Credit Assessment",
+   "fieldtype": "Link",
+   "options": "Credit Assessment"
+  },
+  {
+   "fieldname": "column_break_hpa1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Dealership Branch"
+  },
+  {
+   "fieldname": "salesperson",
+   "label": "Salesperson",
+   "fieldtype": "Link",
+   "options": "Salesperson"
+  },
+  {
+   "fieldname": "start_date",
+   "label": "Agreement Start Date",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "section_break_hpa1",
+   "label": "Financing Terms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cash_price",
+   "label": "Cash Price",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deposit",
+   "label": "Deposit",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_financed",
+   "label": "Amount Financed",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "column_break_hpa2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interest_rate",
+   "label": "Interest Rate (% per annum)",
+   "fieldtype": "Percent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "interest_calculation_method",
+   "label": "Interest Calculation Method",
+   "fieldtype": "Select",
+   "options": "Flat Rate\nReducing Balance"
+  },
+  {
+   "fieldname": "column_break_hpa3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "processing_fee",
+   "label": "Processing Fee",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "insurance",
+   "label": "Insurance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "other_charges",
+   "label": "Other Charges",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_hpa2",
+   "label": "Repayment Structure",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "financing_period_months",
+   "label": "Financing Period (Months)",
+   "fieldtype": "Int",
+   "reqd": 1
+  },
+  {
+   "fieldname": "number_of_installments",
+   "label": "Number of Installments",
+   "fieldtype": "Int",
+   "reqd": 1
+  },
+  {
+   "fieldname": "installment_frequency",
+   "label": "Installment Frequency",
+   "fieldtype": "Select",
+   "options": "Weekly\nBi-weekly\nMonthly",
+   "default": "Monthly",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hpa4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_installment_date",
+   "label": "First Installment Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "total_interest",
+   "label": "Total Interest",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_amount_payable",
+   "label": "Total Amount Payable",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "installment_amount",
+   "label": "Installment Amount (approx.)",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_installment",
+   "label": "Final Installment",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hpa3",
+   "label": "Approval",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "required_approver_role",
+   "label": "Required Approver Role",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_log",
+   "label": "Approval Log",
+   "fieldtype": "Table",
+   "options": "Hire Purchase Approval Log"
+  },
+  {
+   "fieldname": "section_break_hpa4",
+   "label": "Status",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Draft\nPending Approval\nApproved\nRejected\nActive\nCompleted\nDefaulted\nRestructured\nCancelled",
+   "default": "Draft"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Credit Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "General Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Director",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Auditor",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

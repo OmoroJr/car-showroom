@@ -1,0 +1,299 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Sale",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer",
+  "vehicle",
+  "quotation",
+  "reservation",
+  "column_break_s1",
+  "salesperson",
+  "branch",
+  "sale_date",
+  "sale_type",
+  "section_break_s1",
+  "selling_price",
+  "discount",
+  "trade_in",
+  "column_break_s2",
+  "trade_in_value",
+  "deposit_paid",
+  "total_amount",
+  "balance_due",
+  "section_break_s2",
+  "cost_of_vehicle",
+  "gross_profit",
+  "column_break_s3",
+  "commission_rate",
+  "commission_amount",
+  "commission_status",
+  "section_break_s3",
+  "sales_invoice",
+  "section_break_s4",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "SALE-.YYYY.-.#####",
+   "default": "SALE-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "quotation",
+   "label": "Quotation",
+   "fieldtype": "Link",
+   "options": "Vehicle Quotation"
+  },
+  {
+   "fieldname": "reservation",
+   "label": "Reservation",
+   "fieldtype": "Link",
+   "options": "Vehicle Reservation"
+  },
+  {
+   "fieldname": "column_break_s1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "salesperson",
+   "label": "Salesperson",
+   "fieldtype": "Link",
+   "options": "Salesperson"
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Dealership Branch"
+  },
+  {
+   "fieldname": "sale_date",
+   "label": "Sale Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sale_type",
+   "label": "Sale Type",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Cash\nBank Financing\nIn-house Hire Purchase"
+  },
+  {
+   "fieldname": "section_break_s1",
+   "label": "Pricing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "selling_price",
+   "label": "Selling Price",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount",
+   "label": "Discount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "trade_in",
+   "label": "Trade-In",
+   "fieldtype": "Link",
+   "options": "Vehicle Trade In"
+  },
+  {
+   "fieldname": "column_break_s2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_in_value",
+   "label": "Trade-In Value Applied",
+   "fieldtype": "Currency",
+   "fetch_from": "trade_in.net_trade_in_value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "deposit_paid",
+   "label": "Deposit Paid",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "total_amount",
+   "label": "Total Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "balance_due",
+   "label": "Balance Due",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "section_break_s2",
+   "label": "Profitability",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cost_of_vehicle",
+   "label": "Cost of Vehicle",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_profit",
+   "label": "Gross Profit",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_s3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "commission_rate",
+   "label": "Commission Rate (%)",
+   "fieldtype": "Percent",
+   "fetch_from": "salesperson.commission_rate"
+  },
+  {
+   "fieldname": "commission_amount",
+   "label": "Commission Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "commission_status",
+   "label": "Commission Status",
+   "fieldtype": "Select",
+   "options": "Unpaid\nPaid",
+   "default": "Unpaid"
+  },
+  {
+   "fieldname": "section_break_s3",
+   "label": "Accounting",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "label": "ERPNext Sales Invoice",
+   "fieldtype": "Link",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_s4",
+   "label": "Status",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Draft\nConfirmed\nFully Paid\nDelivered\nCancelled",
+   "default": "Draft"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Branch Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Accountant",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Auditor",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "is_submittable": 1
+}

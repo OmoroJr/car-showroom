@@ -1,0 +1,206 @@
+{
+ "doctype": "DocType",
+ "name": "Test Drive",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer",
+  "vehicle",
+  "lead",
+  "salesperson",
+  "column_break_td1",
+  "date",
+  "start_time",
+  "end_time",
+  "status",
+  "section_break_td1",
+  "drivers_licence_no",
+  "contact_number",
+  "section_break_td2",
+  "mileage_before",
+  "mileage_after",
+  "column_break_td2",
+  "fuel_level_before",
+  "fuel_level_after",
+  "vehicle_condition_notes",
+  "section_break_td3",
+  "customer_feedback"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "TD-.YYYY.-.#####",
+   "default": "TD-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lead",
+   "label": "Lead",
+   "fieldtype": "Link",
+   "options": "Vehicle Lead"
+  },
+  {
+   "fieldname": "salesperson",
+   "label": "Salesperson",
+   "fieldtype": "Link",
+   "options": "Salesperson"
+  },
+  {
+   "fieldname": "column_break_td1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "label": "Date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "start_time",
+   "label": "Start Time",
+   "fieldtype": "Time"
+  },
+  {
+   "fieldname": "end_time",
+   "label": "End Time",
+   "fieldtype": "Time"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Scheduled\nIn Progress\nCompleted\nCancelled",
+   "default": "Scheduled"
+  },
+  {
+   "fieldname": "section_break_td1",
+   "label": "Driver",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "drivers_licence_no",
+   "label": "Driver's Licence No.",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "contact_number",
+   "label": "Contact Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_td2",
+   "label": "Vehicle Condition",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "mileage_before",
+   "label": "Mileage Before (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "mileage_after",
+   "label": "Mileage After (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "column_break_td2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fuel_level_before",
+   "label": "Fuel Level Before",
+   "fieldtype": "Select",
+   "options": "Empty\nQuarter\nHalf\nThree Quarter\nFull"
+  },
+  {
+   "fieldname": "fuel_level_after",
+   "label": "Fuel Level After",
+   "fieldtype": "Select",
+   "options": "Empty\nQuarter\nHalf\nThree Quarter\nFull"
+  },
+  {
+   "fieldname": "vehicle_condition_notes",
+   "label": "Vehicle Condition Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "section_break_td3",
+   "label": "Feedback",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer_feedback",
+   "label": "Customer Feedback",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Lead Activity",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "lead",
+  "activity_date",
+  "activity_type",
+  "done_by",
+  "column_break_la1",
+  "next_follow_up_date",
+  "section_break_la1",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "lead",
+   "label": "Lead",
+   "fieldtype": "Link",
+   "options": "Vehicle Lead",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "activity_date",
+   "label": "Activity Date",
+   "fieldtype": "Datetime",
+   "default": "Now",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "activity_type",
+   "label": "Activity Type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "options": "Call\nEmail\nWhatsApp\nSMS\nMeeting\nTest Drive\nFollow-up\nOther"
+  },
+  {
+   "fieldname": "done_by",
+   "label": "Done By",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "column_break_la1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_follow_up_date",
+   "label": "Next Follow-up Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "section_break_la1",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "lead",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  }
+ ]
+}

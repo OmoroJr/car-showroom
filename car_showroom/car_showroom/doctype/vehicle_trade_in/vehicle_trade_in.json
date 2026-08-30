@@ -1,0 +1,209 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Trade In",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer",
+  "vehicle_sale",
+  "section_break_t1",
+  "traded_registration_number",
+  "traded_chassis_number",
+  "column_break_t1",
+  "traded_make",
+  "traded_model",
+  "column_break_t2",
+  "traded_year",
+  "traded_mileage",
+  "section_break_t2",
+  "customer_stated_value",
+  "inspection_value",
+  "market_value",
+  "column_break_t3",
+  "trade_in_value",
+  "outstanding_finance",
+  "net_trade_in_value",
+  "section_break_t3",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "TRD-.YYYY.-.#####",
+   "default": "TRD-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle_sale",
+   "label": "Applied to Vehicle Sale",
+   "fieldtype": "Link",
+   "options": "Vehicle Sale",
+   "description": "Linked once applied against a new vehicle purchase"
+  },
+  {
+   "fieldname": "section_break_t1",
+   "label": "Traded Vehicle Details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "traded_registration_number",
+   "label": "Registration Number",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "traded_chassis_number",
+   "label": "Chassis / VIN Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_t1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "traded_make",
+   "label": "Make",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "traded_model",
+   "label": "Model",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_t2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "traded_year",
+   "label": "Year",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "traded_mileage",
+   "label": "Mileage (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "section_break_t2",
+   "label": "Valuation",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer_stated_value",
+   "label": "Customer Stated Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "inspection_value",
+   "label": "Inspection Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "market_value",
+   "label": "Market Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_t3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_in_value",
+   "label": "Agreed Trade-In Value",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outstanding_finance",
+   "label": "Outstanding Finance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "net_trade_in_value",
+   "label": "Net Trade-In Value",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "section_break_t3",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "options": "Draft\nValued\nApplied\nCancelled",
+   "default": "Draft"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "traded_registration_number",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Inventory Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

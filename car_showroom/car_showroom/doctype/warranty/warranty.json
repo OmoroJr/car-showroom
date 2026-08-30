@@ -1,0 +1,132 @@
+{
+ "doctype": "DocType",
+ "name": "Warranty",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "vehicle",
+  "vehicle_sale",
+  "column_break_w1",
+  "start_date",
+  "end_date",
+  "mileage_limit",
+  "section_break_w1",
+  "coverage",
+  "exclusions",
+  "section_break_w2",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle_sale",
+   "label": "Vehicle Sale",
+   "fieldtype": "Link",
+   "options": "Vehicle Sale"
+  },
+  {
+   "fieldname": "column_break_w1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "label": "Start Date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "end_date",
+   "label": "End Date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mileage_limit",
+   "label": "Mileage Limit (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "section_break_w1",
+   "label": "Coverage",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "coverage",
+   "label": "Coverage",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "exclusions",
+   "label": "Exclusions",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "section_break_w2",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Active\nExpired\nVoided",
+   "read_only": 1,
+   "default": "Active"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

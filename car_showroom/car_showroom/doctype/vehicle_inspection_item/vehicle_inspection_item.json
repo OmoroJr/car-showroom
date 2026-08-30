@@ -1,0 +1,40 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Inspection Item",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "area",
+  "rating",
+  "comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "area",
+   "label": "Area",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Engine\nTransmission\nSuspension\nBrakes\nTyres\nElectrical System\nAC\nInterior\nExterior\nBodywork\nPaint\nLights\nWindows\nSafety Equipment\nRoad Test"
+  },
+  {
+   "fieldname": "rating",
+   "label": "Rating",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "options": "Excellent\nGood\nFair\nPoor\nNot Applicable"
+  },
+  {
+   "fieldname": "comments",
+   "label": "Comments",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

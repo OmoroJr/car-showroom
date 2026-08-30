@@ -1,0 +1,135 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Inspection",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "vehicle",
+  "inspection_date",
+  "inspector",
+  "column_break_i1",
+  "overall_score",
+  "recommendation",
+  "section_break_i1",
+  "items",
+  "section_break_i2",
+  "attachments",
+  "section_break_i3",
+  "overall_comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "inspection_date",
+   "label": "Inspection Date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "inspector",
+   "label": "Inspector",
+   "fieldtype": "Link",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_i1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overall_score",
+   "label": "Overall Score (%)",
+   "fieldtype": "Percent"
+  },
+  {
+   "fieldname": "recommendation",
+   "label": "Recommendation",
+   "fieldtype": "Select",
+   "options": "Pass\nPass with Repairs\nFail",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_i1",
+   "label": "Checklist",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "label": "Inspection Items",
+   "fieldtype": "Table",
+   "options": "Vehicle Inspection Item"
+  },
+  {
+   "fieldname": "section_break_i2",
+   "label": "Media",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "attachments",
+   "label": "Photos / Videos",
+   "fieldtype": "Table",
+   "options": "Vehicle Inspection Attachment"
+  },
+  {
+   "fieldname": "section_break_i3",
+   "label": "Summary",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "overall_comments",
+   "label": "Overall Comments",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Vehicle Inspector",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Inventory Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

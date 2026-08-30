@@ -1,0 +1,202 @@
+{
+ "doctype": "DocType",
+ "name": "Hire Purchase Payment",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "hire_purchase_agreement",
+  "customer",
+  "column_break_hpp1",
+  "payment_date",
+  "amount",
+  "section_break_hpp1",
+  "payment_method",
+  "reference_number",
+  "mpesa_transaction",
+  "column_break_hpp2",
+  "receipt_number",
+  "received_by",
+  "section_break_hpp2",
+  "allocations",
+  "unallocated_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "HPP-.YYYY.-.#####",
+   "default": "HPP-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "fetch_from": "hire_purchase_agreement.customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_hpp1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_date",
+   "label": "Payment Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "label": "Amount",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_hpp1",
+   "label": "Payment Details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_method",
+   "label": "Payment Method",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "options": "M-Pesa\nBank\nCash\nCheque\nCard\nMobile Money"
+  },
+  {
+   "fieldname": "reference_number",
+   "label": "Reference Number",
+   "fieldtype": "Data",
+   "description": "M-Pesa code, cheque number, bank transaction ref, etc."
+  },
+  {
+   "fieldname": "mpesa_transaction",
+   "label": "M-Pesa Transaction",
+   "fieldtype": "Link",
+   "options": "M-Pesa Transaction",
+   "description": "Linked automatically when reconciled from a Daraja callback"
+  },
+  {
+   "fieldname": "column_break_hpp2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "receipt_number",
+   "label": "Receipt Number",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_by",
+   "label": "Received By",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "section_break_hpp2",
+   "label": "Allocation to Installments",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "allocations",
+   "label": "Allocations",
+   "fieldtype": "Table",
+   "options": "Hire Purchase Payment Allocation"
+  },
+  {
+   "fieldname": "unallocated_amount",
+   "label": "Unallocated Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "description": "Any amount left over after allocating to all outstanding installments (e.g. overpayment)"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "hire_purchase_agreement",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Cashier",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1
+  },
+  {
+   "role": "Collections Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Auditor",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "is_submittable": 1
+}

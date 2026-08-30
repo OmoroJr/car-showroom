@@ -1,0 +1,182 @@
+{
+ "doctype": "DocType",
+ "name": "Notification Settings",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 1,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "section_break_ns1",
+  "enable_email",
+  "enable_sms",
+  "enable_whatsapp",
+  "section_break_ns2",
+  "sms_provider",
+  "sms_username",
+  "column_break_ns1",
+  "sms_api_key",
+  "sms_sender_id",
+  "sms_api_url",
+  "section_break_ns3",
+  "whatsapp_provider",
+  "whatsapp_account_sid",
+  "column_break_ns2",
+  "whatsapp_auth_token",
+  "whatsapp_from_number",
+  "whatsapp_api_url",
+  "section_break_ns4",
+  "template_upcoming",
+  "template_due_today",
+  "template_overdue_3",
+  "template_overdue_30"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ns1",
+   "label": "Channels",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "enable_email",
+   "label": "Enable Email Reminders",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_sms",
+   "label": "Enable SMS Reminders",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "enable_whatsapp",
+   "label": "Enable WhatsApp Reminders",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "section_break_ns2",
+   "label": "SMS Gateway",
+   "fieldtype": "Section Break",
+   "depends_on": "enable_sms"
+  },
+  {
+   "fieldname": "sms_provider",
+   "label": "SMS Provider",
+   "fieldtype": "Select",
+   "options": "Africa's Talking\nCustom",
+   "default": "Africa's Talking"
+  },
+  {
+   "fieldname": "sms_username",
+   "label": "Username",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_ns1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sms_api_key",
+   "label": "API Key",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "sms_sender_id",
+   "label": "Sender ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "sms_api_url",
+   "label": "API URL",
+   "fieldtype": "Data",
+   "default": "https://api.africastalking.com/version1/messaging"
+  },
+  {
+   "fieldname": "section_break_ns3",
+   "label": "WhatsApp Gateway",
+   "fieldtype": "Section Break",
+   "depends_on": "enable_whatsapp"
+  },
+  {
+   "fieldname": "whatsapp_provider",
+   "label": "WhatsApp Provider",
+   "fieldtype": "Select",
+   "options": "Twilio\nMeta Cloud API\nCustom",
+   "default": "Twilio"
+  },
+  {
+   "fieldname": "whatsapp_account_sid",
+   "label": "Account SID / Phone Number ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_ns2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "whatsapp_auth_token",
+   "label": "Auth Token / Access Token",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "whatsapp_from_number",
+   "label": "From Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "whatsapp_api_url",
+   "label": "API URL",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_ns4",
+   "label": "Message Templates",
+   "fieldtype": "Section Break",
+   "description": "Placeholders: {customer_name} {amount} {due_date} {agreement} {vehicle} {company}"
+  },
+  {
+   "fieldname": "template_upcoming",
+   "label": "7 Days Before Due",
+   "fieldtype": "Small Text",
+   "default": "Dear {customer_name}, your vehicle installment of KES {amount} is due on {due_date}. - {company}"
+  },
+  {
+   "fieldname": "template_due_today",
+   "label": "Due Today",
+   "fieldtype": "Small Text",
+   "default": "Dear {customer_name}, your vehicle installment of KES {amount} is due today. - {company}"
+  },
+  {
+   "fieldname": "template_overdue_3",
+   "label": "3 Days Overdue",
+   "fieldtype": "Small Text",
+   "default": "Dear {customer_name}, your vehicle installment of KES {amount} for {vehicle} is overdue. Please pay promptly. - {company}"
+  },
+  {
+   "fieldname": "template_overdue_30",
+   "label": "30+ Days Overdue",
+   "fieldtype": "Small Text",
+   "default": "Dear {customer_name}, your account for {vehicle} requires urgent attention. Outstanding: KES {amount}. Please contact us immediately. - {company}"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ]
+}

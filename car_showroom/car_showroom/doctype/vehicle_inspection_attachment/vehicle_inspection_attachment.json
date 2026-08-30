@@ -1,0 +1,30 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Inspection Attachment",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "attachment",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "attachment",
+   "label": "Attachment",
+   "fieldtype": "Attach",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Data"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

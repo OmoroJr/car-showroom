@@ -1,0 +1,137 @@
+{
+ "doctype": "DocType",
+ "name": "Guarantor",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "hire_purchase_agreement",
+  "guarantor_name",
+  "id_number",
+  "phone",
+  "column_break_g1",
+  "relationship_to_customer",
+  "employment",
+  "income",
+  "guarantee_amount",
+  "section_break_g1",
+  "address",
+  "documents",
+  "signature"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "guarantor_name",
+   "label": "Guarantor Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "id_number",
+   "label": "ID Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "phone",
+   "label": "Phone",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_g1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "relationship_to_customer",
+   "label": "Relationship to Customer",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "employment",
+   "label": "Employment / Business",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "income",
+   "label": "Monthly Income (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "guarantee_amount",
+   "label": "Guarantee Amount (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_g1",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "label": "Address",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "documents",
+   "label": "Documents",
+   "fieldtype": "Table",
+   "options": "Vehicle Document"
+  },
+  {
+   "fieldname": "signature",
+   "label": "Signature",
+   "fieldtype": "Attach"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "guarantor_name",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Credit Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

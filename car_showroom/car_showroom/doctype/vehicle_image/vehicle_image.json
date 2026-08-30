@@ -1,0 +1,37 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Image",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "image",
+  "caption",
+  "is_cover"
+ ],
+ "fields": [
+  {
+   "fieldname": "image",
+   "label": "Image",
+   "fieldtype": "Attach Image",
+   "reqd": 1
+  },
+  {
+   "fieldname": "caption",
+   "label": "Caption",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "is_cover",
+   "label": "Is Cover Image",
+   "fieldtype": "Check"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

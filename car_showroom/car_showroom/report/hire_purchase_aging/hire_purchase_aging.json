@@ -1,0 +1,11 @@
+{
+ "doctype": "Report",
+ "name": "Hire Purchase Aging",
+ "report_name": "Hire Purchase Aging",
+ "module": "Car Showroom",
+ "ref_doctype": "Hire Purchase Installment",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "disabled": 0,
+ "letter_head": null
+}

@@ -1,0 +1,15 @@
+{
+ "doctype": "Number Card",
+ "name": "Sales Revenue",
+ "label": "Sales Revenue",
+ "document_type": "Vehicle Sale",
+ "type": "Document Type",
+ "function": "Sum",
+ "is_public": 1,
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Daily",
+ "module": "Car Showroom",
+ "color": "#2E7D32",
+ "filters_json": "[[\"Vehicle Sale\", \"docstatus\", \"=\", 1]]",
+ "aggregate_function_based_on": "total_amount"
+}

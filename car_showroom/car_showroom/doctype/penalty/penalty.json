@@ -1,0 +1,167 @@
+{
+ "doctype": "DocType",
+ "name": "Penalty",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "hire_purchase_agreement",
+  "installment",
+  "penalty_date",
+  "column_break_pn1",
+  "days_overdue",
+  "penalty_type",
+  "penalty_rate",
+  "section_break_pn1",
+  "calculated_amount",
+  "column_break_pn2",
+  "status",
+  "section_break_pn2",
+  "waived_by",
+  "waiver_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "installment",
+   "label": "Installment",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Installment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "penalty_date",
+   "label": "Penalty Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_pn1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days_overdue",
+   "label": "Days Overdue",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "penalty_type",
+   "label": "Penalty Type",
+   "fieldtype": "Select",
+   "options": "Fixed\nPercentage\nDaily\nMonthly"
+  },
+  {
+   "fieldname": "penalty_rate",
+   "label": "Penalty Rate",
+   "fieldtype": "Float",
+   "description": "Interpreted per Penalty Type: fixed KES amount, or % per day/month"
+  },
+  {
+   "fieldname": "section_break_pn1",
+   "label": "Calculated Amount",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "calculated_amount",
+   "label": "Calculated Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_pn2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Pending\nApplied\nWaived",
+   "default": "Pending"
+  },
+  {
+   "fieldname": "section_break_pn2",
+   "label": "Waiver",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "waived_by",
+   "label": "Waived By",
+   "fieldtype": "Link",
+   "options": "User",
+   "depends_on": "eval:doc.status=='Waived'"
+  },
+  {
+   "fieldname": "waiver_reason",
+   "label": "Waiver Reason",
+   "fieldtype": "Small Text",
+   "depends_on": "eval:doc.status=='Waived'"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "title_field": "installment",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Collections Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Auditor",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

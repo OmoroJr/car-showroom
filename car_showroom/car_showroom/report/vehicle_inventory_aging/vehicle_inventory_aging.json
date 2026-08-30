@@ -1,0 +1,11 @@
+{
+ "doctype": "Report",
+ "name": "Vehicle Inventory Aging",
+ "report_name": "Vehicle Inventory Aging",
+ "module": "Car Showroom",
+ "ref_doctype": "Vehicle",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "disabled": 0,
+ "letter_head": null
+}

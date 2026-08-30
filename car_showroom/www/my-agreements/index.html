@@ -1,0 +1,112 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/car_showroom/css/marketplace.css">
+<div class="cs-page">
+	<h1>{{ title }}</h1>
+
+	{% if not has_account %}
+	<div class="cs-empty">
+		We couldn't find a hire purchase account linked to your login. Please contact your
+		dealership if you believe this is an error.
+	</div>
+	{% elif not agreements %}
+	<div class="cs-empty">You don't have any hire purchase agreements yet.</div>
+	{% else %}
+	{% for a in agreements %}
+	<div class="cs-agreement-card">
+		<div class="cs-agreement-header">
+			<div>
+				<h3>{{ a.vehicle }}</h3>
+				<span class="cs-badge">{{ a.status }}</span>
+			</div>
+			<div class="cs-agreement-amounts">
+				<div><span>Financed</span><strong>KES {{ "{:,.0f}".format(a.amount_financed or 0) }}</strong></div>
+				<div><span>Installment</span><strong>KES {{ "{:,.0f}".format(a.installment_amount or 0) }}</strong></div>
+			</div>
+		</div>
+
+		<div class="cs-progress-bar">
+			<div class="cs-progress-fill" style="width: {{ a.progress_percent }}%;"></div>
+		</div>
+		<p class="cs-progress-label">
+			KES {{ "{:,.0f}".format(a.total_paid) }} paid of KES {{ "{:,.0f}".format(a.total_amount_payable or 0) }}
+			({{ a.progress_percent }}%)
+		</p>
+
+		{% if a.next_due %}
+		<p>Next payment: <strong>KES {{ "{:,.0f}".format(a.next_due.balance or 0) }}</strong>
+			due <strong>{{ frappe.utils.format_date(a.next_due.due_date) }}</strong></p>
+		<button class="cs-btn cs-btn-primary" onclick="csOpenPay('{{ a.name }}', {{ a.next_due.balance or 0 }})">
+			Pay Now via M-Pesa
+		</button>
+		{% else %}
+		<p class="cs-badge">Fully paid — no installments outstanding.</p>
+		{% endif %}
+
+		<a class="cs-btn cs-btn-outline" href="/my-agreements/statement?agreement={{ a.name }}">
+			View Statement
+		</a>
+
+		<table class="cs-spec-table" style="margin-top:16px;">
+			<tr><th>Due Date</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr>
+			{% for i in a.installments %}
+			<tr>
+				<td>{{ frappe.utils.format_date(i.due_date) }}</td>
+				<td>KES {{ "{:,.0f}".format(i.total or 0) }}</td>
+				<td>KES {{ "{:,.0f}".format(i.amount_paid or 0) }}</td>
+				<td>KES {{ "{:,.0f}".format(i.balance or 0) }}</td>
+				<td>{{ i.status }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endfor %}
+	{% endif %}
+</div>
+
+<!-- Pay Now Modal -->
+<div class="cs-modal-backdrop" id="cs-pay-modal">
+	<div class="cs-modal">
+		<button class="cs-close-btn" onclick="csClosePay()">&times;</button>
+		<h3>Pay via M-Pesa</h3>
+		<p id="cs-pay-amount-label"></p>
+		<label>M-Pesa Phone Number</label>
+		<input type="text" id="cs-pay-phone" placeholder="07XXXXXXXX">
+		<div class="cs-modal-actions">
+			<button class="cs-btn cs-btn-primary" onclick="csSubmitPayment()">Send STK Push</button>
+		</div>
+		<div id="cs-pay-result"></div>
+	</div>
+</div>
+
+<script>
+let CS_PAY_AGREEMENT = null;
+let CS_PAY_AMOUNT = 0;
+
+function csOpenPay(agreement, amount) {
+	CS_PAY_AGREEMENT = agreement;
+	CS_PAY_AMOUNT = amount;
+	document.getElementById('cs-pay-amount-label').innerText = "Amount due: KES " + Number(amount).toLocaleString();
+	document.getElementById('cs-pay-modal').classList.add('cs-open');
+}
+function csClosePay() {
+	document.getElementById('cs-pay-modal').classList.remove('cs-open');
+}
+function csSubmitPayment() {
+	const phone = document.getElementById('cs-pay-phone').value;
+	document.getElementById('cs-pay-result').innerText = "Sending STK push...";
+	frappe.call({
+		method: "car_showroom.car_showroom.www_api.pay_installment_via_mpesa",
+		args: { agreement: CS_PAY_AGREEMENT, phone_number: phone, amount: CS_PAY_AMOUNT },
+		callback: function(r) {
+			document.getElementById('cs-pay-result').innerText =
+				r.message ? r.message.message : "Request sent — check your phone.";
+		},
+		error: function() {
+			document.getElementById('cs-pay-result').innerText = "Something went wrong. Please try again.";
+		}
+	});
+}
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{
+ "doctype": "DocType",
+ "name": "Hire Purchase Approval Log",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "field_order": [
+  "approver_role",
+  "approver",
+  "action",
+  "action_date",
+  "comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "approver_role",
+   "label": "Approver Role",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approver",
+   "label": "Approver",
+   "fieldtype": "Link",
+   "options": "User",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "action",
+   "label": "Action",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "options": "Submitted\nApproved\nRejected\nEscalated"
+  },
+  {
+   "fieldname": "action_date",
+   "label": "Date",
+   "fieldtype": "Datetime",
+   "default": "Now",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "comments",
+   "label": "Comments",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

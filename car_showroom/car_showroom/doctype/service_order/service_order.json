@@ -1,0 +1,192 @@
+{
+ "doctype": "DocType",
+ "name": "Service Order",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "vehicle",
+  "customer",
+  "warranty",
+  "column_break_so1",
+  "service_date",
+  "service_type",
+  "service_advisor",
+  "odometer_reading",
+  "section_break_so1",
+  "customer_complaints",
+  "work_done",
+  "section_break_so2",
+  "parts_cost",
+  "labour_cost",
+  "column_break_so2",
+  "total_cost",
+  "is_warranty_claim",
+  "section_break_so3",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "SRV-.YYYY.-.#####",
+   "default": "SRV-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "warranty",
+   "label": "Warranty",
+   "fieldtype": "Link",
+   "options": "Warranty"
+  },
+  {
+   "fieldname": "column_break_so1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_date",
+   "label": "Service Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "service_type",
+   "label": "Service Type",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Scheduled Service\nRepair\nWarranty Claim\nRecall\nOther"
+  },
+  {
+   "fieldname": "service_advisor",
+   "label": "Service Advisor",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "odometer_reading",
+   "label": "Odometer Reading (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "section_break_so1",
+   "label": "Details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer_complaints",
+   "label": "Customer Complaints",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "work_done",
+   "label": "Work Done",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "section_break_so2",
+   "label": "Cost",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "parts_cost",
+   "label": "Parts Cost",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "labour_cost",
+   "label": "Labour Cost",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_so2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_cost",
+   "label": "Total Cost",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "is_warranty_claim",
+   "label": "Covered Under Warranty",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "section_break_so3",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "bold": 1,
+   "options": "Booked\nIn Progress\nCompleted\nCancelled",
+   "default": "Booked"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "vehicle",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

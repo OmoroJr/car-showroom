@@ -1,0 +1,15 @@
+{
+ "doctype": "Number Card",
+ "name": "Today's Collections",
+ "label": "Today's Collections",
+ "document_type": "Hire Purchase Payment",
+ "type": "Document Type",
+ "function": "Sum",
+ "is_public": 1,
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Daily",
+ "module": "Car Showroom",
+ "color": "#2E7D32",
+ "filters_json": "[[\"Hire Purchase Payment\", \"docstatus\", \"=\", 1], [\"Hire Purchase Payment\", \"payment_date\", \"=\", \"Today\"]]",
+ "aggregate_function_based_on": "amount"
+}

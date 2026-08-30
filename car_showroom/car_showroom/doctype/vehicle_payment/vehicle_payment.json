@@ -1,0 +1,167 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Payment",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "sale",
+  "customer",
+  "column_break_p1",
+  "payment_date",
+  "amount",
+  "section_break_p1",
+  "payment_method",
+  "reference_number",
+  "column_break_p2",
+  "receipt_number",
+  "received_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "PMT-.YYYY.-.#####",
+   "default": "PMT-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "sale",
+   "label": "Vehicle Sale",
+   "fieldtype": "Link",
+   "options": "Vehicle Sale",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Showroom Customer",
+   "fetch_from": "sale.customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_p1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_date",
+   "label": "Payment Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "label": "Amount",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_p1",
+   "label": "Payment Details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_method",
+   "label": "Payment Method",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "options": "M-Pesa\nBank\nCash\nCheque\nCard\nMobile Money"
+  },
+  {
+   "fieldname": "reference_number",
+   "label": "Reference Number",
+   "fieldtype": "Data",
+   "description": "M-Pesa code, cheque number, bank transaction ref, etc."
+  },
+  {
+   "fieldname": "column_break_p2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "receipt_number",
+   "label": "Receipt Number",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_by",
+   "label": "Received By",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "sale",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Cashier",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Accountant",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Auditor",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "is_submittable": 1
+}

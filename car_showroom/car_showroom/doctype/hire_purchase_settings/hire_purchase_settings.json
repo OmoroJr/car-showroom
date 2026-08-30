@@ -1,0 +1,117 @@
+{
+ "doctype": "DocType",
+ "name": "Hire Purchase Settings",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 1,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "default_interest_method",
+  "grace_period_days",
+  "section_break_hps1",
+  "approval_limits",
+  "section_break_hps2",
+  "default_penalty_type",
+  "default_penalty_rate",
+  "column_break_hps2",
+  "max_penalty_amount",
+  "section_break_hps3",
+  "document_expiry_alert_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_interest_method",
+   "label": "Default Interest Calculation Method",
+   "fieldtype": "Select",
+   "options": "Flat Rate\nReducing Balance",
+   "default": "Flat Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grace_period_days",
+   "label": "Grace Period (Days)",
+   "fieldtype": "Int",
+   "default": "0",
+   "description": "Days after due date before an installment is considered overdue"
+  },
+  {
+   "fieldname": "section_break_hps1",
+   "label": "Approval Limits",
+   "fieldtype": "Section Break",
+   "description": "Configure who must approve a Hire Purchase Agreement, by amount financed"
+  },
+  {
+   "fieldname": "approval_limits",
+   "label": "Approval Limits",
+   "fieldtype": "Table",
+   "options": "HP Approval Limit"
+  },
+  {
+   "fieldname": "section_break_hps2",
+   "label": "Penalty Configuration",
+   "fieldtype": "Section Break",
+   "description": "Used by the daily penalty engine \u2014 never hard-coded"
+  },
+  {
+   "fieldname": "default_penalty_type",
+   "label": "Default Penalty Type",
+   "fieldtype": "Select",
+   "options": "Fixed\nPercentage\nDaily\nMonthly",
+   "default": "Percentage"
+  },
+  {
+   "fieldname": "default_penalty_rate",
+   "label": "Default Penalty Rate",
+   "fieldtype": "Float",
+   "description": "Interpreted per Default Penalty Type: fixed KES amount, or % per day/month"
+  },
+  {
+   "fieldname": "column_break_hps2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_penalty_amount",
+   "label": "Maximum Penalty Amount (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_hps3",
+   "label": "Document Expiry Alerts",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "document_expiry_alert_days",
+   "label": "Alert This Many Days Before Expiry",
+   "fieldtype": "Int",
+   "default": "30"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "General Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}

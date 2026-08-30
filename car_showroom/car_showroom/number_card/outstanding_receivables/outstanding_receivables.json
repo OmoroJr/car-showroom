@@ -1,0 +1,15 @@
+{
+ "doctype": "Number Card",
+ "name": "Outstanding Receivables",
+ "label": "Outstanding Receivables",
+ "document_type": "Hire Purchase Installment",
+ "type": "Document Type",
+ "function": "Sum",
+ "is_public": 1,
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Daily",
+ "module": "Car Showroom",
+ "color": "#B36B00",
+ "filters_json": "[[\"Hire Purchase Installment\", \"status\", \"in\", [\"Pending\", \"Partially Paid\", \"Overdue\"]]]",
+ "aggregate_function_based_on": "balance"
+}

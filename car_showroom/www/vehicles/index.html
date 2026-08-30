@@ -1,0 +1,65 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/car_showroom/css/marketplace.css">
+<div class="cs-page">
+	<div class="cs-hero">
+		<h1>{{ title }}</h1>
+		<p>Browse our current stock — cash, bank financing, or in-house hire purchase.</p>
+	</div>
+
+	<form class="cs-filter-form" method="get">
+		<select name="make">
+			<option value="">All Makes</option>
+			{% for make in makes %}
+			<option value="{{ make }}" {% if filters.make == make %}selected{% endif %}>{{ make }}</option>
+			{% endfor %}
+		</select>
+		<input type="text" name="model" placeholder="Model" value="{{ filters.model or '' }}">
+		<select name="body_type">
+			<option value="">Any Body Type</option>
+			{% for bt in ["Sedan", "SUV", "Hatchback", "Pickup", "Van", "Truck", "Bus", "Coupe", "Convertible", "Wagon"] %}
+			<option value="{{ bt }}" {% if filters.body_type == bt %}selected{% endif %}>{{ bt }}</option>
+			{% endfor %}
+		</select>
+		<select name="fuel_type">
+			<option value="">Any Fuel</option>
+			{% for ft in ["Petrol", "Diesel", "Hybrid", "Electric", "LPG"] %}
+			<option value="{{ ft }}" {% if filters.fuel_type == ft %}selected{% endif %}>{{ ft }}</option>
+			{% endfor %}
+		</select>
+		<select name="transmission">
+			<option value="">Any Transmission</option>
+			{% for tm in ["Manual", "Automatic", "CVT"] %}
+			<option value="{{ tm }}" {% if filters.transmission == tm %}selected{% endif %}>{{ tm }}</option>
+			{% endfor %}
+		</select>
+		<input type="number" name="min_price" placeholder="Min Price (KES)" value="{{ filters.min_price or '' }}">
+		<input type="number" name="max_price" placeholder="Max Price (KES)" value="{{ filters.max_price or '' }}">
+		<input type="number" name="max_mileage" placeholder="Max Mileage (km)" value="{{ filters.max_mileage or '' }}">
+		<button type="submit">Filter</button>
+	</form>
+
+	{% if vehicles %}
+	<div class="cs-grid">
+		{% for v in vehicles %}
+		<a class="cs-card" href="/{{ v.route }}">
+			{% if v.cover_image %}
+			<img src="{{ v.cover_image }}" alt="{{ v.make }} {{ v.model }}">
+			{% else %}
+			<img src="/assets/car_showroom/images/placeholder.svg" alt="No photo">
+			{% endif %}
+			<div class="cs-card-body">
+				<span class="cs-badge">{{ v.year or "" }}</span>
+				<p class="cs-card-title">{{ v.make }} {{ v.model }} {{ v.variant or "" }}</p>
+				<p class="cs-card-meta">{{ v.mileage or 0 }} km &middot; {{ v.fuel_type or "" }} &middot; {{ v.transmission or "" }}</p>
+				<p class="cs-card-price">KES {{ "{:,.0f}".format(v.asking_price or 0) }}</p>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+	{% else %}
+	<div class="cs-empty">No vehicles match your filters right now — try widening your search.</div>
+	{% endif %}
+</div>
+{% endblock %}

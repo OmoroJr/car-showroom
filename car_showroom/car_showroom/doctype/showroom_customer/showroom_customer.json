@@ -1,0 +1,236 @@
+{
+ "doctype": "DocType",
+ "name": "Showroom Customer",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "naming_series",
+  "customer_type",
+  "full_name",
+  "id_number",
+  "kra_pin",
+  "column_break_3",
+  "phone",
+  "alternate_phone",
+  "email",
+  "section_break_3",
+  "address",
+  "county",
+  "town",
+  "section_break_4",
+  "occupation",
+  "employer",
+  "monthly_income",
+  "column_break_4",
+  "business_name",
+  "business_registration_no",
+  "section_break_5",
+  "branch",
+  "credit_notes",
+  "column_break_5",
+  "portal_user",
+  "disabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Naming Series",
+   "fieldtype": "Select",
+   "options": "CUST-.YYYY.-.#####",
+   "default": "CUST-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "customer_type",
+   "label": "Customer Type",
+   "fieldtype": "Select",
+   "options": "Individual\nCompany\nDealer\nGovernment\nNGO\nInstitution",
+   "default": "Individual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "label": "Full Name / Company Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "id_number",
+   "label": "ID / Passport Number",
+   "fieldtype": "Data",
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "kra_pin",
+   "label": "KRA PIN",
+   "fieldtype": "Data",
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "label": "Phone",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "alternate_phone",
+   "label": "Alternate Phone",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "email",
+   "label": "Email",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_3",
+   "label": "Address",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "label": "Address",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "county",
+   "label": "County",
+   "fieldtype": "Select",
+   "options": "\nMombasa\nKwale\nKilifi\nTana River\nLamu\nTaita Taveta\nGarissa\nWajir\nMandera\nMarsabit\nIsiolo\nMeru\nTharaka-Nithi\nEmbu\nKitui\nMachakos\nMakueni\nNyandarua\nNyeri\nKirinyaga\nMurang'a\nKiambu\nTurkana\nWest Pokot\nSamburu\nTrans Nzoia\nUasin Gishu\nElgeyo-Marakwet\nNandi\nBaringo\nLaikipia\nNakuru\nNarok\nKajiado\nKericho\nBomet\nKakamega\nVihiga\nBungoma\nBusia\nSiaya\nKisumu\nHoma Bay\nMigori\nKisii\nNyamira\nNairobi"
+  },
+  {
+   "fieldname": "town",
+   "label": "Town",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_4",
+   "label": "Employment / Business",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "occupation",
+   "label": "Occupation",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "employer",
+   "label": "Employer",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "monthly_income",
+   "label": "Monthly Income (KES)",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "business_name",
+   "label": "Business Name",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "business_registration_no",
+   "label": "Business Registration No.",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_5",
+   "label": "Other",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Dealership Branch"
+  },
+  {
+   "fieldname": "credit_notes",
+   "label": "Credit Notes",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "column_break_5",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "portal_user",
+   "label": "Portal User Account",
+   "fieldtype": "Link",
+   "options": "User",
+   "description": "Linked so this customer can log into the Hire Purchase customer portal"
+  },
+  {
+   "fieldname": "disabled",
+   "label": "Disabled",
+   "fieldtype": "Check"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "title_field": "full_name",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Salesperson",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Branch Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ]
+}
