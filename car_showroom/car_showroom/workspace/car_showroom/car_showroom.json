@@ -1,0 +1,437 @@
+{
+ "doctype": "Workspace",
+ "name": "Car Showroom",
+ "label": "Car Showroom",
+ "title": "Car Showroom",
+ "module": "Car Showroom",
+ "category": "Modules",
+ "icon": "car",
+ "color": "#1F3A5F",
+ "is_standard": 1,
+ "public": 1,
+ "for_user": "",
+ "parent_page": "",
+ "sequence_id": 30.0,
+ "content": "[{\"id\": \"header-main\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Car Showroom</b></span>\", \"col\": 12}}, {\"id\": \"header-shortcuts\", \"type\": \"header\", \"data\": {\"text\": \"Your Shortcuts\", \"col\": 12}}, {\"id\": \"shortcut-Vehicle\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle\", \"col\": 3}}, {\"id\": \"shortcut-Vehicle Sale\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Sale\", \"col\": 3}}, {\"id\": \"shortcut-Vehicle Lead\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Lead\", \"col\": 3}}, {\"id\": \"shortcut-Showroom Customer\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Showroom Customer\", \"col\": 3}}, {\"id\": \"shortcut-Hire Purchase Agreement\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hire Purchase Agreement\", \"col\": 3}}, {\"id\": \"shortcut-Hire Purchase Aging\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hire Purchase Aging\", \"col\": 3}}, {\"id\": \"spacer-1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"header-cards\", \"type\": \"header\", \"data\": {\"text\": \"Modules\", \"col\": 12}}, {\"id\": \"card-Inventory & CRM\", \"type\": \"card\", \"data\": {\"card_name\": \"Inventory & CRM\", \"col\": 4}}, {\"id\": \"card-Sales\", \"type\": \"card\", \"data\": {\"card_name\": \"Sales\", \"col\": 4}}, {\"id\": \"card-Hire Purchase\", \"type\": \"card\", \"data\": {\"card_name\": \"Hire Purchase\", \"col\": 4}}, {\"id\": \"card-After-Sales\", \"type\": \"card\", \"data\": {\"card_name\": \"After-Sales\", \"col\": 4}}, {\"id\": \"card-Reports\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"card-Settings\", \"type\": \"card\", \"data\": {\"card_name\": \"Settings\", \"col\": 4}}]",
+ "shortcuts": [
+  {
+   "label": "Vehicle",
+   "type": "DocType",
+   "link_to": "Vehicle",
+   "doc_view": "List",
+   "color": "Blue",
+   "stats_filter": "{}"
+  },
+  {
+   "label": "Vehicle Sale",
+   "type": "DocType",
+   "link_to": "Vehicle Sale",
+   "doc_view": "List",
+   "color": "Blue",
+   "stats_filter": "{}"
+  },
+  {
+   "label": "Vehicle Lead",
+   "type": "DocType",
+   "link_to": "Vehicle Lead",
+   "doc_view": "List",
+   "color": "Blue",
+   "stats_filter": "{}"
+  },
+  {
+   "label": "Showroom Customer",
+   "type": "DocType",
+   "link_to": "Showroom Customer",
+   "doc_view": "List",
+   "color": "Blue",
+   "stats_filter": "{}"
+  },
+  {
+   "label": "Hire Purchase Agreement",
+   "type": "DocType",
+   "link_to": "Hire Purchase Agreement",
+   "doc_view": "List",
+   "color": "Blue",
+   "stats_filter": "{}"
+  },
+  {
+   "label": "Hire Purchase Aging",
+   "type": "Report",
+   "link_to": "Hire Purchase Aging",
+   "doc_view": "",
+   "color": "Blue",
+   "stats_filter": "{}"
+  }
+ ],
+ "links": [
+  {
+   "label": "Inventory & CRM",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Inspection",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Inspection",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Expense",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Expense",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Yard",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Yard",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Dealership Branch",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Dealership Branch",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Showroom Customer",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Showroom Customer",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Lead",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Lead",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Lead Activity",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Lead Activity",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Test Drive",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Test Drive",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Quotation",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Quotation",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Salesperson",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Salesperson",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Sales",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Sale",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Sale",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Payment",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Payment",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Reservation",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Reservation",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Vehicle Trade In",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Trade In",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Commission Payment",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Commission Payment",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Credit Assessment",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Credit Assessment",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Guarantor",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Guarantor",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase Agreement",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Hire Purchase Agreement",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase Installment",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Hire Purchase Installment",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase Payment",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Hire Purchase Payment",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Penalty",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Penalty",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Collection Activity",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Collection Activity",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "M-Pesa Transaction",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "M-Pesa Transaction",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "After-Sales",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Warranty",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Warranty",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Service Order",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Service Order",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Reports",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase Aging",
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Hire Purchase Aging",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 1
+  },
+  {
+   "label": "Sales Summary",
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Sales Summary",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 1
+  },
+  {
+   "label": "Vehicle Inventory Aging",
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Vehicle Inventory Aging",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 1
+  },
+  {
+   "label": "Settings",
+   "type": "Card Break",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Hire Purchase Settings",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Hire Purchase Settings",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "M-Pesa Settings",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "M-Pesa Settings",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  },
+  {
+   "label": "Notification Settings",
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Notification Settings",
+   "hidden": 0,
+   "onboard": 0,
+   "link_count": 0,
+   "is_query_report": 0
+  }
+ ],
+ "roles": []
+}
