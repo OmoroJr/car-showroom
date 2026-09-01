@@ -26,10 +26,43 @@ class HirePurchaseAgreement(Document):
 		self.status = "Active"
 		generate_installment_schedule(self)
 		frappe.db.set_value("Vehicle", self.vehicle, "status", "Sold")
+		self.link_credit_assessment()
 
 	def on_cancel(self):
 		self.status = "Cancelled"
 		frappe.db.delete("Hire Purchase Installment", {"hire_purchase_agreement": self.name})
+		self.unlink_credit_assessment()
+
+	def link_credit_assessment(self):
+		"""Point the Credit Assessment that led to this agreement forward to it,
+		and move the originating Credit Application to its final state."""
+		if not self.credit_application:
+			return
+
+		assessment = frappe.db.get_value(
+			"Credit Assessment",
+			{"credit_application": self.credit_application, "docstatus": 1},
+			"name",
+			order_by="modified desc",
+		)
+		if assessment:
+			frappe.db.set_value("Credit Assessment", assessment, "hire_purchase_agreement", self.name)
+
+		frappe.db.set_value("Credit Application", self.credit_application, "status", "Agreement Created")
+
+	def unlink_credit_assessment(self):
+		if not self.credit_application:
+			return
+
+		assessment = frappe.db.get_value(
+			"Credit Assessment",
+			{"credit_application": self.credit_application, "hire_purchase_agreement": self.name},
+			"name",
+		)
+		if assessment:
+			frappe.db.set_value("Credit Assessment", assessment, "hire_purchase_agreement", None)
+
+		frappe.db.set_value("Credit Application", self.credit_application, "status", "Approved")
 
 	def calculate_schedule_totals(self):
 		"""Pre-submit preview of installment amount / total interest / total payable,

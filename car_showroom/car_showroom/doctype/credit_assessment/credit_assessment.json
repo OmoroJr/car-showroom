@@ -37,6 +37,8 @@
   "recommended_term_months",
   "section_break_notes",
   "remarks",
+  "section_break_outcome",
+  "hire_purchase_agreement",
   "amended_from"
  ],
  "fields": [
@@ -188,6 +190,20 @@
    "fieldname": "remarks",
    "label": "Remarks",
    "fieldtype": "Text"
+  },
+  {
+   "fieldname": "section_break_outcome",
+   "label": "Outcome",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "no_copy": 1,
+   "read_only": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "amended_from",
