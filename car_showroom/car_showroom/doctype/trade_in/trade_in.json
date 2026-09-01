@@ -1,0 +1,175 @@
+{
+ "doctype": "DocType",
+ "name": "Trade-In",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "customer",
+  "quotation",
+  "status",
+  "section_break_vehicle",
+  "make",
+  "model",
+  "year",
+  "column_break_1",
+  "registration_number",
+  "chassis_number",
+  "mileage",
+  "section_break_condition",
+  "condition_notes",
+  "inspection_status",
+  "column_break_2",
+  "appraised_value",
+  "existing_finance_balance",
+  "net_trade_in_value",
+  "section_break_created",
+  "resulting_vehicle"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "quotation",
+   "label": "Related Quotation",
+   "fieldtype": "Link",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Requested\nInspected\nValued\nApproved\nRejected\nAcquired",
+   "default": "Requested",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_vehicle",
+   "label": "Trade-In Vehicle",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "make",
+   "label": "Make",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "model",
+   "label": "Model",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "year",
+   "label": "Year",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "registration_number",
+   "label": "Registration Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "chassis_number",
+   "label": "Chassis / VIN",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "mileage",
+   "label": "Mileage (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "section_break_condition",
+   "label": "Condition & Valuation",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "condition_notes",
+   "label": "Condition Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "inspection_status",
+   "label": "Inspection Status",
+   "fieldtype": "Select",
+   "options": "Pending\nInspected",
+   "default": "Pending"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "appraised_value",
+   "label": "Appraised Value",
+   "fieldtype": "Currency",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "existing_finance_balance",
+   "label": "Existing Finance Balance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "net_trade_in_value",
+   "label": "Net Trade-In Value",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_created",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "resulting_vehicle",
+   "label": "Resulting Vehicle (if acquired)",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "read_only": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "TRD-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

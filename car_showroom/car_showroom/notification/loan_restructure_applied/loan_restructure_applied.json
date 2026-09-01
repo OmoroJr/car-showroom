@@ -1,0 +1,18 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Loan Restructure Request",
+ "enabled": 1,
+ "event": "Submit",
+ "is_standard": 1,
+ "message": "<p>Restructure <strong>{{ doc.name }}</strong> has been applied. The installment schedule for {{ doc.hire_purchase_agreement }} has been rebuilt starting {{ doc.restructure_effective_date }}.</p>",
+ "module": "Car Showroom",
+ "name": "Loan Restructure Applied",
+ "send_system_notification": 1,
+ "subject": "Restructure {{ doc.name }} applied to agreement {{ doc.hire_purchase_agreement }}",
+ "recipients": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

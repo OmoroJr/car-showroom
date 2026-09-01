@@ -5,33 +5,40 @@
  "custom": 0,
  "istable": 1,
  "issingle": 0,
- "editable_grid": 1,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
  "track_changes": 0,
+ "editable_grid": 1,
  "field_order": [
   "image",
-  "caption",
-  "is_cover"
+  "category",
+  "caption"
  ],
  "fields": [
   {
    "fieldname": "image",
    "label": "Image",
    "fieldtype": "Attach Image",
-   "reqd": 1
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "category",
+   "label": "Category",
+   "fieldtype": "Select",
+   "options": "Front\nRear\nLeft\nRight\nInterior\nEngine\nDashboard\nTyres\nDamage\nOther",
+   "in_list_view": 1
   },
   {
    "fieldname": "caption",
    "label": "Caption",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "is_cover",
-   "label": "Is Cover Image",
-   "fieldtype": "Check"
+   "fieldtype": "Data",
+   "in_list_view": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "engine": "InnoDB",
  "permissions": []
 }

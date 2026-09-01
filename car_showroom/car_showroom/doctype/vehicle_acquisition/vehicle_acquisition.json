@@ -1,0 +1,151 @@
+{
+ "doctype": "DocType",
+ "name": "Vehicle Acquisition",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 1,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "vehicle",
+  "acquisition_type",
+  "supplier_name",
+  "auction_reference",
+  "column_break_1",
+  "purchase_date",
+  "purchase_price",
+  "currency",
+  "exchange_rate",
+  "section_break_1",
+  "deposit",
+  "balance",
+  "column_break_2",
+  "payment_terms",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "acquisition_type",
+   "label": "Acquisition Type",
+   "fieldtype": "Select",
+   "options": "Local Purchase\nImport\nAuction\nTrade-In\nConsignment\nDealer Purchase\nCompany Fleet Disposal",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "supplier_name",
+   "label": "Supplier / Seller",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "auction_reference",
+   "label": "Auction Reference",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_date",
+   "label": "Purchase Date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "purchase_price",
+   "label": "Purchase Price",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "label": "Currency",
+   "fieldtype": "Select",
+   "options": "KES\nUSD\nJPY\nGBP\nEUR",
+   "default": "KES"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "label": "Exchange Rate",
+   "fieldtype": "Float",
+   "default": "1"
+  },
+  {
+   "fieldname": "section_break_1",
+   "label": "Payment Terms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "deposit",
+   "label": "Deposit",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "balance",
+   "label": "Balance",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_terms",
+   "label": "Payment Terms",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "amended_from",
+   "label": "Amended From",
+   "fieldtype": "Link",
+   "options": "Vehicle Acquisition",
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "ACQ-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "disabled": 0,
+ "doctype": "Report",
+ "filters": [],
+ "is_standard": "Yes",
+ "letter_head": null,
+ "module": "Car Showroom",
+ "name": "Collections Aging Summary",
+ "prepared_report": 0,
+ "ref_doctype": "Collection Case",
+ "report_name": "Collections Aging Summary",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

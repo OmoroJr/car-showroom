@@ -5,50 +5,69 @@
  "custom": 0,
  "istable": 0,
  "issingle": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "is_submittable": 1,
+ "is_tree": 0,
+ "quick_entry": 1,
  "track_changes": 1,
+ "editable_grid": 0,
  "field_order": [
+  "credit_application",
   "customer",
-  "hire_purchase_agreement",
-  "assessment_date",
+  "column_break_1",
   "assessed_by",
-  "section_break_ca1",
+  "assessment_date",
+  "section_break_income",
   "monthly_income",
-  "other_income",
-  "column_break_ca1",
-  "existing_loan_obligations",
   "monthly_expenses",
-  "section_break_ca2",
-  "requested_financing_amount",
-  "deposit_offered",
-  "column_break_ca2",
-  "proposed_installment_amount",
-  "section_break_ca3",
+  "existing_obligations",
+  "column_break_2",
+  "proposed_deposit",
+  "requested_finance",
+  "proposed_installment",
+  "section_break_ratios",
   "debt_to_income_ratio",
   "installment_to_income_ratio",
-  "column_break_ca3",
+  "column_break_3",
   "credit_score",
   "risk_rating",
-  "section_break_ca4",
-  "recommendation",
-  "notes"
+  "section_break_recommendation",
+  "recommended_limit",
+  "recommended_deposit",
+  "column_break_4",
+  "recommended_term_months",
+  "section_break_notes",
+  "remarks",
+  "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "credit_application",
+   "label": "Credit Application",
+   "fieldtype": "Link",
+   "options": "Credit Application",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
   {
    "fieldname": "customer",
    "label": "Customer",
    "fieldtype": "Link",
-   "options": "Showroom Customer",
-   "reqd": 1,
+   "options": "Customer",
+   "read_only": 1,
    "in_list_view": 1
   },
   {
-   "fieldname": "hire_purchase_agreement",
-   "label": "Hire Purchase Agreement",
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assessed_by",
+   "label": "Assessed By",
    "fieldtype": "Link",
-   "options": "Hire Purchase Agreement",
-   "in_list_view": 1
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "assessment_date",
@@ -57,70 +76,52 @@
    "default": "Today"
   },
   {
-   "fieldname": "assessed_by",
-   "label": "Assessed By",
-   "fieldtype": "Link",
-   "options": "User",
-   "default": "__user"
-  },
-  {
-   "fieldname": "section_break_ca1",
+   "fieldname": "section_break_income",
    "label": "Income & Obligations",
    "fieldtype": "Section Break"
   },
   {
    "fieldname": "monthly_income",
-   "label": "Monthly Income (KES)",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "other_income",
-   "label": "Other Income (KES)",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "column_break_ca1",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "existing_loan_obligations",
-   "label": "Existing Loan Obligations (KES/month)",
-   "fieldtype": "Currency"
+   "label": "Monthly Income",
+   "fieldtype": "Currency",
+   "reqd": 1
   },
   {
    "fieldname": "monthly_expenses",
-   "label": "Monthly Expenses (KES)",
+   "label": "Monthly Expenses",
    "fieldtype": "Currency"
   },
   {
-   "fieldname": "section_break_ca2",
-   "label": "Requested Financing",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "requested_financing_amount",
-   "label": "Requested Financing Amount (KES)",
+   "fieldname": "existing_obligations",
+   "label": "Existing Monthly Obligations",
    "fieldtype": "Currency"
   },
   {
-   "fieldname": "deposit_offered",
-   "label": "Deposit Offered (KES)",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "column_break_ca2",
+   "fieldname": "column_break_2",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "proposed_installment_amount",
-   "label": "Proposed Installment Amount (KES)",
-   "fieldtype": "Currency"
+   "fieldname": "proposed_deposit",
+   "label": "Proposed Deposit",
+   "fieldtype": "Currency",
+   "reqd": 1
   },
   {
-   "fieldname": "section_break_ca3",
-   "label": "Assessment Result",
+   "fieldname": "requested_finance",
+   "label": "Requested Finance Amount",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "proposed_installment",
+   "label": "Proposed Installment",
+   "fieldtype": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ratios",
+   "label": "Ratios & Score",
    "fieldtype": "Section Break"
   },
   {
@@ -136,46 +137,73 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_ca3",
+   "fieldname": "column_break_3",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "credit_score",
-   "label": "Credit Score (0-100)",
-   "fieldtype": "Int",
-   "read_only": 1
+   "label": "Credit Score",
+   "fieldtype": "Int"
   },
   {
    "fieldname": "risk_rating",
    "label": "Risk Rating",
    "fieldtype": "Select",
-   "options": "Low\nMedium\nHigh",
+   "options": "Low\nMedium\nHigh\nVery High",
    "read_only": 1,
    "in_list_view": 1
   },
   {
-   "fieldname": "section_break_ca4",
+   "fieldname": "section_break_recommendation",
+   "label": "Recommendation",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "recommended_limit",
+   "label": "Recommended Limit",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "recommended_deposit",
+   "label": "Recommended Deposit",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recommended_term_months",
+   "label": "Recommended Term (Months)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "section_break_notes",
    "label": "",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "recommendation",
-   "label": "Recommendation",
-   "fieldtype": "Select",
-   "options": "Approve\nApprove with Conditions\nDecline",
-   "in_list_view": 1
+   "fieldname": "remarks",
+   "label": "Remarks",
+   "fieldtype": "Text"
   },
   {
-   "fieldname": "notes",
-   "label": "Notes",
-   "fieldtype": "Text"
+   "fieldname": "amended_from",
+   "label": "Amended From",
+   "fieldtype": "Link",
+   "options": "Credit Assessment",
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "autoname": "hash",
- "title_field": "customer",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "ASSESS-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -183,37 +211,11 @@
    "write": 1,
    "create": 1,
    "delete": 1,
+   "report": 1,
+   "export": 1,
    "print": 1,
    "email": 1,
-   "export": 1,
-   "report": 1,
    "share": 1
-  },
-  {
-   "role": "Credit Officer",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1,
-   "delete": 1
-  },
-  {
-   "role": "Finance Manager",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  },
-  {
-   "role": "General Manager",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
   }
  ]
 }

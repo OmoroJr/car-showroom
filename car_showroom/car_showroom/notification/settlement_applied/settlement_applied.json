@@ -1,0 +1,18 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Settlement Quotation",
+ "enabled": 1,
+ "event": "Submit",
+ "is_standard": 1,
+ "message": "<p>Settlement <strong>{{ doc.name }}</strong> has been applied. Agreement {{ doc.hire_purchase_agreement }} is now marked Settled. Amount received: {{ doc.amount_received }}.</p>",
+ "module": "Car Showroom",
+ "name": "Settlement Applied",
+ "send_system_notification": 1,
+ "subject": "Settlement {{ doc.name }} applied - agreement {{ doc.hire_purchase_agreement }} closed",
+ "recipients": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

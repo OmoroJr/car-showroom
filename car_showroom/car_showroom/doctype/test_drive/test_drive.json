@@ -4,46 +4,39 @@
  "module": "Car Showroom",
  "custom": 0,
  "istable": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
  "track_changes": 1,
+ "editable_grid": 0,
  "field_order": [
-  "naming_series",
   "customer",
   "vehicle",
-  "lead",
+  "branch",
   "salesperson",
-  "column_break_td1",
-  "date",
-  "start_time",
-  "end_time",
+  "column_break_1",
+  "scheduled_date",
+  "scheduled_time",
   "status",
-  "section_break_td1",
-  "drivers_licence_no",
-  "contact_number",
-  "section_break_td2",
+  "section_break_licence",
+  "licence_number",
   "mileage_before",
+  "fuel_before",
+  "damage_before",
+  "column_break_2",
   "mileage_after",
-  "column_break_td2",
-  "fuel_level_before",
-  "fuel_level_after",
-  "vehicle_condition_notes",
-  "section_break_td3",
+  "fuel_after",
+  "damage_after",
+  "section_break_feedback",
   "customer_feedback"
  ],
  "fields": [
   {
-   "fieldname": "naming_series",
-   "label": "Naming Series",
-   "fieldtype": "Select",
-   "options": "TD-.YYYY.-.#####",
-   "default": "TD-.YYYY.-.#####"
-  },
-  {
    "fieldname": "customer",
    "label": "Customer",
    "fieldtype": "Link",
-   "options": "Showroom Customer",
+   "options": "Customer",
    "reqd": 1,
    "in_list_view": 1
   },
@@ -56,104 +49,96 @@
    "in_list_view": 1
   },
   {
-   "fieldname": "lead",
-   "label": "Lead",
+   "fieldname": "branch",
+   "label": "Branch",
    "fieldtype": "Link",
-   "options": "Vehicle Lead"
+   "options": "Branch",
+   "in_list_view": 1
   },
   {
    "fieldname": "salesperson",
    "label": "Salesperson",
    "fieldtype": "Link",
-   "options": "Salesperson"
+   "options": "User",
+   "in_list_view": 1
   },
   {
-   "fieldname": "column_break_td1",
+   "fieldname": "column_break_1",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "date",
+   "fieldname": "scheduled_date",
    "label": "Date",
    "fieldtype": "Date",
    "reqd": 1,
-   "default": "Today",
    "in_list_view": 1
   },
   {
-   "fieldname": "start_time",
-   "label": "Start Time",
-   "fieldtype": "Time"
-  },
-  {
-   "fieldname": "end_time",
-   "label": "End Time",
-   "fieldtype": "Time"
+   "fieldname": "scheduled_time",
+   "label": "Time",
+   "fieldtype": "Time",
+   "reqd": 1
   },
   {
    "fieldname": "status",
    "label": "Status",
    "fieldtype": "Select",
-   "in_list_view": 1,
-   "bold": 1,
    "options": "Scheduled\nIn Progress\nCompleted\nCancelled",
-   "default": "Scheduled"
+   "default": "Scheduled",
+   "in_list_view": 1,
+   "in_standard_filter": 1
   },
   {
-   "fieldname": "section_break_td1",
-   "label": "Driver",
+   "fieldname": "section_break_licence",
+   "label": "Driver & Vehicle Condition",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "drivers_licence_no",
-   "label": "Driver's Licence No.",
+   "fieldname": "licence_number",
+   "label": "Driving Licence Number",
    "fieldtype": "Data"
-  },
-  {
-   "fieldname": "contact_number",
-   "label": "Contact Number",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "section_break_td2",
-   "label": "Vehicle Condition",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "mileage_before",
-   "label": "Mileage Before (km)",
+   "label": "Mileage Before",
    "fieldtype": "Int"
   },
   {
-   "fieldname": "mileage_after",
-   "label": "Mileage After (km)",
-   "fieldtype": "Int"
+   "fieldname": "fuel_before",
+   "label": "Fuel Before",
+   "fieldtype": "Select",
+   "options": "Empty\nQuarter\nHalf\nThree Quarter\nFull"
   },
   {
-   "fieldname": "column_break_td2",
+   "fieldname": "damage_before",
+   "label": "Damage Notes (Before)",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "column_break_2",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "fuel_level_before",
-   "label": "Fuel Level Before",
+   "fieldname": "mileage_after",
+   "label": "Mileage After",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "fuel_after",
+   "label": "Fuel After",
    "fieldtype": "Select",
    "options": "Empty\nQuarter\nHalf\nThree Quarter\nFull"
   },
   {
-   "fieldname": "fuel_level_after",
-   "label": "Fuel Level After",
-   "fieldtype": "Select",
-   "options": "Empty\nQuarter\nHalf\nThree Quarter\nFull"
-  },
-  {
-   "fieldname": "vehicle_condition_notes",
-   "label": "Vehicle Condition Notes",
+   "fieldname": "damage_after",
+   "label": "Damage Notes (After)",
    "fieldtype": "Small Text"
   },
   {
-   "fieldname": "section_break_td3",
-   "label": "Feedback",
+   "fieldname": "section_break_feedback",
+   "label": "",
    "fieldtype": "Section Break"
   },
   {
@@ -164,8 +149,9 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "engine": "InnoDB",
  "autoname": "naming_series:",
- "title_field": "vehicle",
+ "naming_series": "TD-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -173,34 +159,11 @@
    "write": 1,
    "create": 1,
    "delete": 1,
+   "report": 1,
+   "export": 1,
    "print": 1,
    "email": 1,
-   "export": 1,
-   "report": 1,
    "share": 1
-  },
-  {
-   "role": "Salesperson",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1
-  },
-  {
-   "role": "Sales Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1,
-   "delete": 1
   }
  ]
 }

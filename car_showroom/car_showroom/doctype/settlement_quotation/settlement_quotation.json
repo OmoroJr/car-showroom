@@ -1,0 +1,221 @@
+{
+ "doctype": "DocType",
+ "name": "Settlement Quotation",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 1,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "hire_purchase_agreement",
+  "customer",
+  "customer_email",
+  "collection_case",
+  "column_break_1",
+  "quotation_date",
+  "valid_till",
+  "status",
+  "section_break_figures",
+  "outstanding_principal",
+  "accrued_interest",
+  "column_break_2",
+  "outstanding_penalty",
+  "outstanding_fees",
+  "section_break_discount",
+  "early_settlement_rebate",
+  "column_break_3",
+  "settlement_amount",
+  "section_break_payment",
+  "amount_received",
+  "payment_reference",
+  "column_break_4",
+  "settlement_date",
+  "section_break_notes",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer_email",
+   "label": "Customer Email",
+   "fieldtype": "Data",
+   "options": "Email",
+   "fetch_from": "customer.email",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "collection_case",
+   "label": "Collection Case",
+   "fieldtype": "Link",
+   "options": "Collection Case"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation_date",
+   "label": "Quotation Date",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "valid_till",
+   "label": "Valid Till",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Draft\nIssued\nAccepted\nExpired\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_figures",
+   "label": "Settlement Figure",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "outstanding_principal",
+   "label": "Outstanding Principal",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accrued_interest",
+   "label": "Accrued Interest to Date",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_penalty",
+   "label": "Outstanding Penalty",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_fees",
+   "label": "Outstanding Fees",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_discount",
+   "label": "Discount",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "early_settlement_rebate",
+   "label": "Early Settlement Rebate",
+   "fieldtype": "Currency",
+   "default": "0",
+   "description": "Waiver on future scheduled interest, offered as an incentive to settle early."
+  },
+  {
+   "fieldname": "column_break_3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "settlement_amount",
+   "label": "Settlement Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "section_break_payment",
+   "label": "Payment",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amount_received",
+   "label": "Amount Received",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "payment_reference",
+   "label": "Payment Reference",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "settlement_date",
+   "label": "Settlement Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "amended_from",
+   "label": "Amended From",
+   "fieldtype": "Link",
+   "options": "Settlement Quotation",
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "SETL-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

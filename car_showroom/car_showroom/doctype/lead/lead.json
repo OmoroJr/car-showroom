@@ -1,0 +1,143 @@
+{
+ "doctype": "DocType",
+ "name": "Lead",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "lead_name",
+  "customer",
+  "phone",
+  "email",
+  "column_break_1",
+  "source",
+  "branch",
+  "assigned_salesperson",
+  "vehicle_of_interest",
+  "section_break_status",
+  "status",
+  "section_break_activities",
+  "activities",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "lead_name",
+   "label": "Lead Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "phone",
+   "label": "Phone",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "label": "Email",
+   "fieldtype": "Data",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source",
+   "label": "Source",
+   "fieldtype": "Select",
+   "options": "Walk-in\nWebsite\nWhatsApp\nFacebook\nInstagram\nTikTok\nJiji\nReferral\nDealer\nPhone\nEmail\nCampaign",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Branch",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assigned_salesperson",
+   "label": "Assigned Salesperson",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "vehicle_of_interest",
+   "label": "Vehicle of Interest",
+   "fieldtype": "Link",
+   "options": "Vehicle"
+  },
+  {
+   "fieldname": "section_break_status",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "New\nContacted\nQualified\nVehicle Selected\nTest Drive\nQuotation\nNegotiation\nFinance\nDeposit\nSale\nDelivered\nLost",
+   "default": "New",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_activities",
+   "label": "Activity Log",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "activities",
+   "label": "Activities",
+   "fieldtype": "Table",
+   "options": "Lead Activity"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "LEAD-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

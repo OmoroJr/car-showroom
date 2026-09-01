@@ -5,30 +5,35 @@
  "custom": 0,
  "istable": 0,
  "issingle": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
  "track_changes": 1,
+ "editable_grid": 0,
  "field_order": [
-  "hire_purchase_agreement",
+  "credit_application",
   "guarantor_name",
   "id_number",
   "phone",
-  "column_break_g1",
-  "relationship_to_customer",
-  "employment",
-  "income",
+  "column_break_1",
+  "relationship",
+  "employer",
+  "monthly_income",
+  "section_break_guarantee",
   "guarantee_amount",
-  "section_break_g1",
-  "address",
-  "documents",
-  "signature"
+  "consent_given",
+  "column_break_2",
+  "id_document",
+  "income_proof",
+  "section_break_address",
+  "address"
  ],
  "fields": [
   {
-   "fieldname": "hire_purchase_agreement",
-   "label": "Hire Purchase Agreement",
+   "fieldname": "credit_application",
+   "label": "Credit Application",
    "fieldtype": "Link",
-   "options": "Hire Purchase Agreement",
+   "options": "Credit Application",
    "reqd": 1,
    "in_list_view": 1
   },
@@ -41,42 +46,71 @@
   },
   {
    "fieldname": "id_number",
-   "label": "ID Number",
-   "fieldtype": "Data"
+   "label": "National ID Number",
+   "fieldtype": "Data",
+   "reqd": 1
   },
   {
    "fieldname": "phone",
    "label": "Phone",
    "fieldtype": "Data",
+   "reqd": 1,
    "in_list_view": 1
   },
   {
-   "fieldname": "column_break_g1",
+   "fieldname": "column_break_1",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "relationship_to_customer",
-   "label": "Relationship to Customer",
+   "fieldname": "relationship",
+   "label": "Relationship to Applicant",
    "fieldtype": "Data"
   },
   {
-   "fieldname": "employment",
-   "label": "Employment / Business",
+   "fieldname": "employer",
+   "label": "Employer / Business",
    "fieldtype": "Data"
   },
   {
-   "fieldname": "income",
-   "label": "Monthly Income (KES)",
+   "fieldname": "monthly_income",
+   "label": "Monthly Income",
    "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_guarantee",
+   "label": "Guarantee",
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "guarantee_amount",
-   "label": "Guarantee Amount (KES)",
-   "fieldtype": "Currency"
+   "label": "Guarantee Amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1
   },
   {
-   "fieldname": "section_break_g1",
+   "fieldname": "consent_given",
+   "label": "Consent Given",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "id_document",
+   "label": "ID Document",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "income_proof",
+   "label": "Income Proof",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "section_break_address",
    "label": "",
    "fieldtype": "Section Break"
   },
@@ -84,23 +118,13 @@
    "fieldname": "address",
    "label": "Address",
    "fieldtype": "Small Text"
-  },
-  {
-   "fieldname": "documents",
-   "label": "Documents",
-   "fieldtype": "Table",
-   "options": "Vehicle Document"
-  },
-  {
-   "fieldname": "signature",
-   "label": "Signature",
-   "fieldtype": "Attach"
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "autoname": "hash",
- "title_field": "guarantor_name",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "GRT-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -108,30 +132,11 @@
    "write": 1,
    "create": 1,
    "delete": 1,
+   "report": 1,
+   "export": 1,
    "print": 1,
    "email": 1,
-   "export": 1,
-   "report": 1,
    "share": 1
-  },
-  {
-   "role": "Credit Officer",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1,
-   "delete": 1
-  },
-  {
-   "role": "Finance Manager",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
   }
  ]
 }

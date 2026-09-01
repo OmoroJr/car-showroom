@@ -3,158 +3,72 @@
  "name": "Collection Activity",
  "module": "Car Showroom",
  "custom": 0,
- "istable": 0,
+ "istable": 1,
  "issingle": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
  "track_changes": 1,
+ "editable_grid": 1,
  "field_order": [
-  "hire_purchase_agreement",
-  "customer",
-  "column_break_col1",
   "activity_date",
-  "collection_officer",
-  "section_break_col1",
   "activity_type",
-  "notes",
-  "section_break_col2",
-  "promise_to_pay_date",
-  "promise_to_pay_amount",
-  "column_break_col2",
-  "promise_kept",
-  "section_break_col3",
-  "next_action_date"
+  "outcome",
+  "promise_amount",
+  "promise_date",
+  "done_by",
+  "notes"
  ],
  "fields": [
   {
-   "fieldname": "hire_purchase_agreement",
-   "label": "Hire Purchase Agreement",
-   "fieldtype": "Link",
-   "options": "Hire Purchase Agreement",
-   "reqd": 1,
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "customer",
-   "label": "Customer",
-   "fieldtype": "Link",
-   "options": "Showroom Customer",
-   "fetch_from": "hire_purchase_agreement.customer",
-   "read_only": 1,
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "column_break_col1",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "activity_date",
-   "label": "Activity Date",
+   "label": "Date & Time",
    "fieldtype": "Datetime",
-   "default": "Now",
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "collection_officer",
-   "label": "Collection Officer",
-   "fieldtype": "Link",
-   "options": "User",
-   "default": "__user",
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "section_break_col1",
-   "label": "Activity",
-   "fieldtype": "Section Break"
+   "reqd": 1,
+   "in_list_view": 1,
+   "default": "Now"
   },
   {
    "fieldname": "activity_type",
    "label": "Activity Type",
    "fieldtype": "Select",
+   "options": "Phone Call\nSMS\nEmail\nField Visit\nLetter / Notice\nPromise to Pay\nOther",
    "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "outcome",
+   "label": "Outcome",
+   "fieldtype": "Select",
+   "options": "No Answer\nPromise to Pay\nDispute Raised\nRefused to Pay\nPaid\nOther",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "promise_amount",
+   "label": "Promise Amount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "promise_date",
+   "label": "Promise Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "done_by",
+   "label": "Done By",
+   "fieldtype": "Link",
+   "options": "User",
    "in_list_view": 1,
-   "options": "Call\nSMS\nWhatsApp\nVisit\nPromise to Pay\nEscalation\nRecovery Action\nOther"
+   "default": "__user"
   },
   {
    "fieldname": "notes",
    "label": "Notes",
-   "fieldtype": "Text"
-  },
-  {
-   "fieldname": "section_break_col2",
-   "label": "Promise to Pay",
-   "fieldtype": "Section Break",
-   "depends_on": "eval:doc.activity_type=='Promise to Pay'"
-  },
-  {
-   "fieldname": "promise_to_pay_date",
-   "label": "Promise to Pay Date",
-   "fieldtype": "Date"
-  },
-  {
-   "fieldname": "promise_to_pay_amount",
-   "label": "Promise to Pay Amount",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "column_break_col2",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "promise_kept",
-   "label": "Promise Kept?",
-   "fieldtype": "Select",
-   "options": "Pending\nKept\nBroken",
-   "default": "Pending"
-  },
-  {
-   "fieldname": "section_break_col3",
-   "label": "Follow-up",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "next_action_date",
-   "label": "Next Action Date",
-   "fieldtype": "Date"
+   "fieldtype": "Small Text"
   }
  ],
- "sort_field": "activity_date",
+ "sort_field": "modified",
  "sort_order": "DESC",
- "autoname": "hash",
- "title_field": "hire_purchase_agreement",
- "permissions": [
-  {
-   "role": "System Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1
-  },
-  {
-   "role": "Collections Officer",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1,
-   "delete": 1
-  },
-  {
-   "role": "Finance Manager",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  }
- ]
+ "engine": "InnoDB",
+ "permissions": []
 }

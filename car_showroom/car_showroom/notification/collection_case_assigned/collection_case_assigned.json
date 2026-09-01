@@ -1,0 +1,20 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Collection Case",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>You have been assigned Collection Case <strong>{{ doc.name }}</strong> for agreement {{ doc.hire_purchase_agreement }} ({{ doc.customer }}). Outstanding: {{ doc.total_outstanding }}, {{ doc.days_overdue }} days overdue.</p>",
+ "module": "Car Showroom",
+ "name": "Collection Case Assigned",
+ "send_system_notification": 1,
+ "subject": "Collection Case {{ doc.name }} assigned to you",
+ "recipients": [
+  {
+   "receiver_by_document_field": "assigned_collector"
+  }
+ ],
+ "value_changed": "assigned_collector",
+ "condition": "doc.assigned_collector"
+}

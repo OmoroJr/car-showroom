@@ -1,0 +1,217 @@
+{
+ "doctype": "DocType",
+ "name": "Collection Case",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "hire_purchase_agreement",
+  "customer",
+  "customer_email",
+  "vehicle",
+  "column_break_1",
+  "case_date",
+  "status",
+  "priority",
+  "section_break_arrears",
+  "days_overdue",
+  "overdue_amount",
+  "oldest_due_date",
+  "column_break_2",
+  "total_outstanding",
+  "section_break_assignment",
+  "assigned_collector",
+  "column_break_3",
+  "next_follow_up_date",
+  "section_break_activities",
+  "activities",
+  "section_break_resolution",
+  "resolution",
+  "closed_date",
+  "column_break_4",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer_email",
+   "label": "Customer Email",
+   "fieldtype": "Data",
+   "options": "Email",
+   "fetch_from": "customer.email",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "case_date",
+   "label": "Case Opened",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Open\nIn Progress\nPromise to Pay\nEscalated\nLegal Notice\nRepossession Recommended\nResolved\nClosed",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "priority",
+   "label": "Priority",
+   "fieldtype": "Select",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "default": "Low",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_arrears",
+   "label": "Arrears",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "days_overdue",
+   "label": "Days Overdue",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "overdue_amount",
+   "label": "Overdue Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "oldest_due_date",
+   "label": "Oldest Unpaid Due Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_outstanding",
+   "label": "Total Outstanding Balance",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_assignment",
+   "label": "Assignment",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "assigned_collector",
+   "label": "Assigned Collector",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_follow_up_date",
+   "label": "Next Follow-up Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "section_break_activities",
+   "label": "Activities",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "activities",
+   "label": "Activities",
+   "fieldtype": "Table",
+   "options": "Collection Activity"
+  },
+  {
+   "fieldname": "section_break_resolution",
+   "label": "Resolution",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "resolution",
+   "label": "Resolution",
+   "fieldtype": "Select",
+   "options": "\nPaid in Full\nRestructured\nSettled\nRepossessed\nWritten Off"
+  },
+  {
+   "fieldname": "closed_date",
+   "label": "Closed Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "label": "Remarks",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "COLL-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

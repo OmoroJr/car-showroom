@@ -1,0 +1,18 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Repossession Order",
+ "enabled": 1,
+ "event": "Submit",
+ "is_standard": 1,
+ "message": "<p>Repossession Order <strong>{{ doc.name }}</strong> is complete. Vehicle {{ doc.vehicle }} was recovered on {{ doc.recovery_date }} in {{ doc.vehicle_condition }} condition and moved to storage {{ doc.storage_location }}.</p>",
+ "module": "Car Showroom",
+ "name": "Repossession Completed",
+ "send_system_notification": 1,
+ "subject": "Vehicle {{ doc.vehicle }} repossessed and recovered",
+ "recipients": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

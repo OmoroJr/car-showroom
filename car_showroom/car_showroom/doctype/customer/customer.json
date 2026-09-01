@@ -1,0 +1,173 @@
+{
+ "doctype": "DocType",
+ "name": "Customer",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "customer_name",
+  "id_number",
+  "kra_pin",
+  "column_break_1",
+  "phone",
+  "email",
+  "customer_source",
+  "section_break_employment",
+  "employment_status",
+  "employer",
+  "monthly_income",
+  "column_break_2",
+  "business_name",
+  "bank_name",
+  "bank_account",
+  "section_break_address",
+  "address",
+  "section_break_docs",
+  "documents",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer_name",
+   "label": "Customer Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "id_number",
+   "label": "National ID / Passport No.",
+   "fieldtype": "Data",
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kra_pin",
+   "label": "KRA PIN",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "label": "Phone",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "label": "Email",
+   "fieldtype": "Data",
+   "options": "Email"
+  },
+  {
+   "fieldname": "customer_source",
+   "label": "Customer Source",
+   "fieldtype": "Select",
+   "options": "Walk-in\nWebsite\nWhatsApp\nFacebook\nInstagram\nTikTok\nJiji\nReferral\nDealer\nPhone\nEmail\nCampaign",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_employment",
+   "label": "Employment / Business",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "employment_status",
+   "label": "Employment Status",
+   "fieldtype": "Select",
+   "options": "Employed\nSelf-Employed\nBusiness Owner\nUnemployed\nRetired"
+  },
+  {
+   "fieldname": "employer",
+   "label": "Employer",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "monthly_income",
+   "label": "Monthly Income",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "business_name",
+   "label": "Business Name",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "bank_name",
+   "label": "Bank Name",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "bank_account",
+   "label": "Bank Account Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_address",
+   "label": "Address",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "label": "Address",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "section_break_docs",
+   "label": "KYC Documents",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "documents",
+   "label": "Documents",
+   "fieldtype": "Table",
+   "options": "Customer Document"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "CUST-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

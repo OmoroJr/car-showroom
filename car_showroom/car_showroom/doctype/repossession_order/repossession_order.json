@@ -1,0 +1,251 @@
+{
+ "doctype": "DocType",
+ "name": "Repossession Order",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 1,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "hire_purchase_agreement",
+  "customer",
+  "vehicle",
+  "collection_case",
+  "column_break_1",
+  "order_date",
+  "status",
+  "reason",
+  "section_break_authorization",
+  "authorized_by",
+  "authorization_date",
+  "legal_notice_sent",
+  "column_break_2",
+  "legal_notice_date",
+  "outstanding_balance_at_order",
+  "section_break_recovery",
+  "recovery_agent",
+  "recovery_date",
+  "recovery_location",
+  "column_break_3",
+  "vehicle_condition",
+  "odometer_reading",
+  "repossession_cost",
+  "section_break_storage",
+  "storage_yard",
+  "storage_location",
+  "column_break_4",
+  "estimated_resale_value",
+  "section_break_notes",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "collection_case",
+   "label": "Collection Case",
+   "fieldtype": "Link",
+   "options": "Collection Case"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "order_date",
+   "label": "Order Date",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Draft\nAuthorized\nIn Progress\nRecovered\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reason",
+   "label": "Reason",
+   "fieldtype": "Select",
+   "options": "Chronic Default\nCustomer Surrender\nCourt Order\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_authorization",
+   "label": "Authorization",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "authorized_by",
+   "label": "Authorized By",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "authorization_date",
+   "label": "Authorization Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "legal_notice_sent",
+   "label": "Legal Notice Sent",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "legal_notice_date",
+   "label": "Legal Notice Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "outstanding_balance_at_order",
+   "label": "Outstanding Balance at Order",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_recovery",
+   "label": "Recovery Details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "recovery_agent",
+   "label": "Recovery Agent",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "recovery_date",
+   "label": "Recovery Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "recovery_location",
+   "label": "Recovery Location",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_condition",
+   "label": "Vehicle Condition on Recovery",
+   "fieldtype": "Select",
+   "options": "Good\nFair\nPoor\nDamaged"
+  },
+  {
+   "fieldname": "odometer_reading",
+   "label": "Odometer Reading (km)",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "repossession_cost",
+   "label": "Repossession Cost",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_storage",
+   "label": "Storage",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "storage_yard",
+   "label": "Storage Yard",
+   "fieldtype": "Link",
+   "options": "Yard"
+  },
+  {
+   "fieldname": "storage_location",
+   "label": "Storage Location",
+   "fieldtype": "Link",
+   "options": "Yard Location"
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "estimated_resale_value",
+   "label": "Estimated Resale Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "amended_from",
+   "label": "Amended From",
+   "fieldtype": "Link",
+   "options": "Repossession Order",
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "REPO-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

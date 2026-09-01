@@ -1,0 +1,18 @@
+{
+ "channel": "Email",
+ "doctype": "Notification",
+ "document_type": "Payment",
+ "enabled": 1,
+ "event": "Submit",
+ "is_standard": 1,
+ "message": "<p>Dear Customer,</p><p>We have received your payment of <strong>{{ doc.amount }}</strong> against agreement {{ doc.hire_purchase_agreement }} via {{ doc.payment_method }}. Receipt number: {{ doc.receipt_number }}. New outstanding balance: {{ doc.new_balance }}.</p>",
+ "module": "Car Showroom",
+ "name": "Payment Receipt",
+ "send_system_notification": 0,
+ "subject": "Payment received - Receipt {{ doc.receipt_number }}",
+ "recipients": [
+  {
+   "receiver_by_document_field": "customer_email"
+  }
+ ]
+}

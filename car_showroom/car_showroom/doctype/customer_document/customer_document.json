@@ -1,0 +1,72 @@
+{
+ "doctype": "DocType",
+ "name": "Customer Document",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
+ "track_changes": 0,
+ "editable_grid": 1,
+ "field_order": [
+  "document_type",
+  "document_number",
+  "document",
+  "issue_date",
+  "expiry_date",
+  "verification_status",
+  "verified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "label": "Document Type",
+   "fieldtype": "Select",
+   "options": "National ID\nPassport\nKRA PIN\nDriving Licence\nPayslip\nBank Statement\nBusiness Registration\nProof of Address\nPassport Photo",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "document_number",
+   "label": "Document Number",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "document",
+   "label": "Document",
+   "fieldtype": "Attach",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "issue_date",
+   "label": "Issue Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "expiry_date",
+   "label": "Expiry Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "verification_status",
+   "label": "Verification Status",
+   "fieldtype": "Select",
+   "options": "Pending\nVerified\nRejected",
+   "default": "Pending",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "verified_by",
+   "label": "Verified By",
+   "fieldtype": "Link",
+   "options": "User"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "permissions": []
+}

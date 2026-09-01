@@ -5,93 +5,107 @@
  "custom": 0,
  "istable": 0,
  "issingle": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
  "track_changes": 1,
+ "editable_grid": 0,
  "field_order": [
   "stock_number",
-  "branch",
-  "yard",
-  "column_break_v1",
   "registration_number",
   "chassis_number",
   "engine_number",
-  "section_break_v1",
+  "column_break_identity",
+  "branch",
+  "yard",
+  "yard_location",
+  "status",
+  "section_break_specs",
   "make",
   "model",
   "variant",
-  "column_break_v2",
+  "trim",
   "year",
   "model_year",
+  "column_break_specs_2",
   "colour",
-  "section_break_v2",
   "body_type",
   "fuel_type",
   "transmission",
-  "column_break_v3",
   "engine_capacity",
-  "mileage",
+  "engine_type",
   "drive_type",
-  "column_break_v3b",
-  "number_of_doors",
-  "seating_capacity",
-  "section_break_v3",
-  "condition",
-  "origin",
-  "column_break_v4",
-  "acquisition_type",
-  "supplier",
-  "section_break_v4",
-  "purchase_price",
-  "clearing_cost",
-  "transport_cost",
-  "repair_cost",
-  "column_break_v5",
-  "inspection_cost",
-  "insurance_cost",
-  "other_costs",
+  "section_break_specs_3",
+  "mileage",
+  "doors",
+  "seats",
+  "steering",
+  "column_break_specs_4",
+  "country_of_origin",
+  "import_country",
+  "previous_owner",
+  "number_of_owners",
+  "section_break_pricing",
   "total_cost",
-  "section_break_v5",
+  "market_price",
   "asking_price",
-  "minimum_selling_price",
-  "column_break_v6",
-  "expected_profit",
-  "actual_profit",
-  "section_break_v6",
-  "logbook_status",
-  "has_import_documents",
-  "has_kra_documents",
-  "has_ntsa_documents",
-  "column_break_v7",
-  "has_inspection_certificate",
-  "has_insurance",
-  "has_customs_documents",
-  "transfer_status",
-  "documents",
-  "section_break_v7",
-  "status",
-  "section_break_v8",
+  "minimum_price",
+  "column_break_pricing_2",
+  "wholesale_price",
+  "financed_price",
+  "hire_purchase_price",
+  "gross_profit",
+  "gross_margin",
+  "section_break_acquisition",
+  "date_acquired",
+  "days_in_stock",
+  "section_break_cost_sheet",
+  "cost_entries",
+  "section_break_media",
   "images",
-  "section_break_v9",
-  "is_published",
-  "route"
+  "documents",
+  "section_break_notes",
+  "notes"
  ],
  "fields": [
   {
    "fieldname": "stock_number",
    "label": "Stock Number",
    "fieldtype": "Data",
-   "read_only": 1,
+   "reqd": 1,
    "unique": 1,
    "in_list_view": 1,
-   "in_global_search": 1,
-   "description": "Auto-generated: <branch code>-<year>-<serial>"
+   "read_only": 1
+  },
+  {
+   "fieldname": "registration_number",
+   "label": "Registration Number",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "chassis_number",
+   "label": "Chassis / VIN",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "engine_number",
+   "label": "Engine Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_identity",
+   "label": "",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "branch",
    "label": "Branch",
    "fieldtype": "Link",
-   "options": "Dealership Branch",
+   "options": "Branch",
    "reqd": 1,
    "in_list_view": 1
   },
@@ -102,34 +116,24 @@
    "options": "Yard"
   },
   {
-   "fieldname": "column_break_v1",
-   "label": "",
-   "fieldtype": "Column Break"
+   "fieldname": "yard_location",
+   "label": "Yard Location",
+   "fieldtype": "Link",
+   "options": "Yard Location"
   },
   {
-   "fieldname": "registration_number",
-   "label": "Registration Number",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_global_search": 1
-  },
-  {
-   "fieldname": "chassis_number",
-   "label": "Chassis / VIN Number",
-   "fieldtype": "Data",
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Sourced\nPurchased\nIn Transit\nAt Port\nUnder Clearing\nCleared\nAt Yard\nUnder Inspection\nUnder Repair\nReady for Sale\nAdvertised\nReserved\nOn Test Drive\nSold\nAwaiting Payment\nAwaiting Transfer\nReady for Handover\nDelivered\nReturned\nRepossessed\nConsignment\nWholesale\nDisposed",
+   "default": "Sourced",
    "reqd": 1,
-   "unique": 1,
    "in_list_view": 1,
-   "in_global_search": 1
+   "in_standard_filter": 1
   },
   {
-   "fieldname": "engine_number",
-   "label": "Engine Number",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "section_break_v1",
-   "label": "Vehicle Details",
+   "fieldname": "section_break_specs",
+   "label": "Vehicle Specifications",
    "fieldtype": "Section Break"
   },
   {
@@ -152,14 +156,15 @@
    "fieldtype": "Data"
   },
   {
-   "fieldname": "column_break_v2",
-   "label": "",
-   "fieldtype": "Column Break"
+   "fieldname": "trim",
+   "label": "Trim",
+   "fieldtype": "Data"
   },
   {
    "fieldname": "year",
    "label": "Year of Manufacture",
-   "fieldtype": "Int"
+   "fieldtype": "Int",
+   "in_list_view": 1
   },
   {
    "fieldname": "model_year",
@@ -167,24 +172,24 @@
    "fieldtype": "Int"
   },
   {
+   "fieldname": "column_break_specs_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "colour",
    "label": "Colour",
    "fieldtype": "Data"
   },
   {
-   "fieldname": "section_break_v2",
-   "label": "",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "body_type",
    "label": "Body Type",
    "fieldtype": "Select",
-   "options": "Sedan\nSUV\nHatchback\nPickup\nVan\nTruck\nBus\nCoupe\nConvertible\nWagon\nOther"
+   "options": "Sedan\nSUV\nHatchback\nPickup\nVan\nWagon\nCoupe\nConvertible\nTruck\nBus\nOther"
   },
   {
    "fieldname": "fuel_type",
-   "label": "Fuel Type",
+   "label": "Fuel",
    "fieldtype": "Select",
    "options": "Petrol\nDiesel\nHybrid\nElectric\nLPG"
   },
@@ -195,132 +200,90 @@
    "options": "Manual\nAutomatic\nCVT"
   },
   {
-   "fieldname": "column_break_v3",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "engine_capacity",
    "label": "Engine Capacity (cc)",
-   "fieldtype": "Data"
+   "fieldtype": "Int"
   },
   {
-   "fieldname": "mileage",
-   "label": "Mileage (km)",
-   "fieldtype": "Int"
+   "fieldname": "engine_type",
+   "label": "Engine Type",
+   "fieldtype": "Data"
   },
   {
    "fieldname": "drive_type",
    "label": "Drive Type",
    "fieldtype": "Select",
-   "options": "2WD\n4WD\nAWD"
+   "options": "2WD\n4WD\nAWD\nFWD\nRWD"
   },
   {
-   "fieldname": "column_break_v3b",
+   "fieldname": "section_break_specs_3",
    "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "number_of_doors",
-   "label": "Number of Doors",
-   "fieldtype": "Int"
-  },
-  {
-   "fieldname": "seating_capacity",
-   "label": "Seating Capacity",
-   "fieldtype": "Int"
-  },
-  {
-   "fieldname": "section_break_v3",
-   "label": "Classification",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "condition",
-   "label": "Condition",
-   "fieldtype": "Select",
-   "options": "New\nUsed\nReconditioned",
-   "reqd": 1
+   "fieldname": "mileage",
+   "label": "Mileage (km)",
+   "fieldtype": "Int",
+   "in_list_view": 1
   },
   {
-   "fieldname": "origin",
-   "label": "Origin",
-   "fieldtype": "Select",
-   "options": "Imported\nLocal"
+   "fieldname": "doors",
+   "label": "Doors",
+   "fieldtype": "Int"
   },
   {
-   "fieldname": "column_break_v4",
+   "fieldname": "seats",
+   "label": "Seats",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "steering",
+   "label": "Steering",
+   "fieldtype": "Select",
+   "options": "Right Hand Drive\nLeft Hand Drive"
+  },
+  {
+   "fieldname": "column_break_specs_4",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "acquisition_type",
-   "label": "Acquisition Type",
-   "fieldtype": "Select",
-   "options": "Direct Purchase\nAuction\nImportation\nTrade-In\nConsignment\nDealer Purchase"
+   "fieldname": "country_of_origin",
+   "label": "Country of Origin",
+   "fieldtype": "Data"
   },
   {
-   "fieldname": "supplier",
-   "label": "Supplier",
-   "fieldtype": "Link",
-   "options": "Supplier"
+   "fieldname": "import_country",
+   "label": "Import Country",
+   "fieldtype": "Data"
   },
   {
-   "fieldname": "section_break_v4",
-   "label": "Commercial Information",
+   "fieldname": "previous_owner",
+   "label": "Previous Owner",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "number_of_owners",
+   "label": "Number of Owners",
+   "fieldtype": "Int",
+   "default": "1"
+  },
+  {
+   "fieldname": "section_break_pricing",
+   "label": "Pricing",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "purchase_price",
-   "label": "Purchase Price",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "clearing_cost",
-   "label": "Clearing Cost",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "transport_cost",
-   "label": "Transport Cost",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "repair_cost",
-   "label": "Repair Cost",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "column_break_v5",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "inspection_cost",
-   "label": "Inspection Cost",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "insurance_cost",
-   "label": "Insurance Cost",
-   "fieldtype": "Currency"
-  },
-  {
-   "fieldname": "other_costs",
-   "label": "Other Costs",
-   "fieldtype": "Currency"
   },
   {
    "fieldname": "total_cost",
    "label": "Total Cost",
    "fieldtype": "Currency",
    "read_only": 1,
-   "bold": 1
+   "description": "Sum of Vehicle Cost Entry table"
   },
   {
-   "fieldname": "section_break_v5",
-   "label": "",
-   "fieldtype": "Section Break"
+   "fieldname": "market_price",
+   "label": "Market Price",
+   "fieldtype": "Currency"
   },
   {
    "fieldname": "asking_price",
@@ -329,103 +292,72 @@
    "in_list_view": 1
   },
   {
-   "fieldname": "minimum_selling_price",
-   "label": "Minimum Selling Price",
+   "fieldname": "minimum_price",
+   "label": "Minimum Price",
    "fieldtype": "Currency"
   },
   {
-   "fieldname": "column_break_v6",
+   "fieldname": "column_break_pricing_2",
    "label": "",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "expected_profit",
-   "label": "Expected Profit",
+   "fieldname": "wholesale_price",
+   "label": "Wholesale Price",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "financed_price",
+   "label": "Financed Price",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "hire_purchase_price",
+   "label": "Hire Purchase Price",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "gross_profit",
+   "label": "Gross Profit",
    "fieldtype": "Currency",
    "read_only": 1
   },
   {
-   "fieldname": "actual_profit",
-   "label": "Actual Profit",
-   "fieldtype": "Currency",
-   "read_only": 1,
-   "description": "Set automatically when the vehicle is sold"
+   "fieldname": "gross_margin",
+   "label": "Gross Margin (%)",
+   "fieldtype": "Percent",
+   "read_only": 1
   },
   {
-   "fieldname": "section_break_v6",
-   "label": "Documentation",
+   "fieldname": "section_break_acquisition",
+   "label": "Acquisition",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "logbook_status",
-   "label": "Logbook Status",
-   "fieldtype": "Select",
-   "options": "Original\nDuplicate\nPending\nNot Available"
+   "fieldname": "date_acquired",
+   "label": "Date Acquired",
+   "fieldtype": "Date"
   },
   {
-   "fieldname": "has_import_documents",
-   "label": "Import Documents",
-   "fieldtype": "Check"
+   "fieldname": "days_in_stock",
+   "label": "Days in Stock",
+   "fieldtype": "Int",
+   "read_only": 1
   },
   {
-   "fieldname": "has_kra_documents",
-   "label": "KRA Documents",
-   "fieldtype": "Check"
+   "fieldname": "section_break_cost_sheet",
+   "label": "Cost Sheet",
+   "fieldtype": "Section Break"
   },
   {
-   "fieldname": "has_ntsa_documents",
-   "label": "NTSA Documents",
-   "fieldtype": "Check"
-  },
-  {
-   "fieldname": "column_break_v7",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "has_inspection_certificate",
-   "label": "Inspection Certificate",
-   "fieldtype": "Check"
-  },
-  {
-   "fieldname": "has_insurance",
-   "label": "Insurance",
-   "fieldtype": "Check"
-  },
-  {
-   "fieldname": "has_customs_documents",
-   "label": "Customs Documents",
-   "fieldtype": "Check"
-  },
-  {
-   "fieldname": "transfer_status",
-   "label": "Transfer Status",
-   "fieldtype": "Select",
-   "options": "Not Started\nIn Progress\nCompleted"
-  },
-  {
-   "fieldname": "documents",
-   "label": "Documents",
+   "fieldname": "cost_entries",
+   "label": "Cost Entries",
    "fieldtype": "Table",
-   "options": "Vehicle Document"
+   "options": "Vehicle Cost Entry"
   },
   {
-   "fieldname": "section_break_v7",
-   "label": "Status",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "status",
-   "label": "Status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "bold": 1,
-   "options": "Available\nReserved\nUnder Inspection\nUnder Repair\nOn Test Drive\nSold\nDelivered\nConsignment\nReturned",
-   "default": "Available"
-  },
-  {
-   "fieldname": "section_break_v8",
-   "label": "Photos",
+   "fieldname": "section_break_media",
+   "label": "Media & Documents",
    "fieldtype": "Section Break"
   },
   {
@@ -435,27 +367,25 @@
    "options": "Vehicle Image"
   },
   {
-   "fieldname": "section_break_v9",
-   "label": "Public Website",
+   "fieldname": "documents",
+   "label": "Documents",
+   "fieldtype": "Table",
+   "options": "Vehicle Document"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "is_published",
-   "label": "Show on Public Website",
-   "fieldtype": "Check",
-   "default": "0"
-  },
-  {
-   "fieldname": "route",
-   "label": "Route",
-   "fieldtype": "Data",
-   "read_only": 1
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "autoname": "hash",
- "title_field": "stock_number",
+ "engine": "InnoDB",
  "permissions": [
   {
    "role": "System Manager",
@@ -463,65 +393,11 @@
    "write": 1,
    "create": 1,
    "delete": 1,
+   "report": 1,
+   "export": 1,
    "print": 1,
    "email": 1,
-   "export": 1,
-   "report": 1,
    "share": 1
-  },
-  {
-   "role": "Inventory Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1,
-   "delete": 1
-  },
-  {
-   "role": "Vehicle Inspector",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  },
-  {
-   "role": "Sales Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "print": 1,
-   "email": 1,
-   "export": 1,
-   "report": 1,
-   "share": 1
-  },
-  {
-   "role": "Salesperson",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  },
-  {
-   "role": "Branch Manager",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  },
-  {
-   "role": "Auditor",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
   }
- ],
- "has_web_view": 1,
- "is_published_field": "is_published",
- "route": ""
+ ]
 }

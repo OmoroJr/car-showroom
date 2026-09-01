@@ -6,7 +6,7 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 
-class TradeIn(Document):
+class VehicleTradeIn(Document):
 
 	def validate(self):
 		self.calculate_net_value()

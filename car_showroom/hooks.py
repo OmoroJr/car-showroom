@@ -2,53 +2,63 @@ from . import __version__ as app_version
 
 app_name = "car_showroom"
 app_title = "Car Showroom"
-app_publisher = "Wycliffs"
-app_description = "Car Dealership & Hire Purchase Management System for Mombasa, Kenya"
+app_publisher = "Mombasa Auto Group"
+app_description = "Enterprise Car Dealership, Showroom, Vehicle Sales & Hire Purchase Management ERP"
 app_email = "admin@example.com"
 app_license = "MIT"
-app_icon = "octicon octicon-car"
-app_color = "#1F3A5F"
 
 # Includes in <head>
 # ------------------
-app_include_js = "/assets/car_showroom/js/car_showroom.js"
+# app_include_css = "/assets/car_showroom/css/car_showroom.css"
+# app_include_js = "/assets/car_showroom/js/car_showroom.js"
 
-# Website / Portal
-# ----------------
-portal_menu_items = [
-	{"title": "My Hire Purchase Agreements", "route": "/my-agreements", "reference_doctype": "Hire Purchase Agreement"},
-]
+# include js, css files in header of web template
+# web_include_css = "/assets/car_showroom/css/car_showroom.css"
+# web_include_js = "/assets/car_showroom/js/car_showroom.js"
 
-# Document Events
-# ----------------
-doc_events = {
-	"Vehicle": {
-		"validate": "car_showroom.car_showroom.doctype.vehicle.vehicle.validate_vehicle",
-	},
-	"Test Drive": {
-		"validate": "car_showroom.car_showroom.doctype.test_drive.test_drive.validate_test_drive",
-		"on_update": "car_showroom.car_showroom.doctype.test_drive.test_drive.sync_vehicle_status",
-	},
-}
+# Home Pages
+# ----------
+# application home page (will override Website Settings)
+# home_page = "login"
 
-# Scheduled Tasks
-# ----------------
-# Order matters: overdue status must be refreshed before penalties are
-# calculated and before overdue reminders are sent.
-scheduler_events = {
-	"daily": [
-		"car_showroom.car_showroom.doctype.vehicle_reservation.vehicle_reservation.auto_expire_reservations",
-		"car_showroom.car_showroom.doctype.hire_purchase_installment.hire_purchase_installment.mark_overdue_installments",
-		"car_showroom.car_showroom.doctype.penalty.penalty.apply_penalties",
-		"car_showroom.car_showroom.reminders.send_payment_reminders",
-		"car_showroom.car_showroom.document_alerts.check_document_expiries",
-		"car_showroom.car_showroom.doctype.warranty.warranty.expire_warranties",
-	],
-}
+# Generators
+# ----------
+# automatically create page for each record of this doctype
+# website_generators = ["Vehicle"]
 
 # Installation
 # ------------
-after_install = "car_showroom.install.after_install"
+# before_install = "car_showroom.install.before_install"
+# after_install = "car_showroom.install.after_install"
 
-# Fixtures (populated in later phases: roles, custom fields, workflows)
+# Document Events
+# ---------------
+# Hook on document methods and events
+
+doc_events = {
+	"Vehicle": {
+		"before_save": "car_showroom.car_showroom.doctype.vehicle.vehicle.before_save",
+		"on_update": "car_showroom.car_showroom.doctype.vehicle.vehicle.on_update",
+	}
+}
+
+# Scheduled Tasks
+# ---------------
+
+scheduler_events = {
+	"daily": [
+		"car_showroom.car_showroom.doctype.vehicle.vehicle.update_days_in_stock",
+		"car_showroom.car_showroom.doctype.reservation.reservation.expire_due_reservations",
+		"car_showroom.car_showroom.doctype.reservation.reservation.alert_expiring_reservations",
+		"car_showroom.car_showroom.doctype.hire_purchase_installment.hire_purchase_installment.update_overdue_and_penalties",
+		"car_showroom.car_showroom.doctype.collection_case.collection_case.sync_collection_cases",
+	],
+}
+
+# Fixtures
+# --------
 # fixtures = []
+
+# Testing
+# -------
+# before_tests = "car_showroom.install.before_tests"

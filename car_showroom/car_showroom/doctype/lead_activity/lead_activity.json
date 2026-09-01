@@ -1,0 +1,51 @@
+{
+ "doctype": "DocType",
+ "name": "Lead Activity",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 1,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
+ "track_changes": 0,
+ "editable_grid": 1,
+ "field_order": [
+  "activity_type",
+  "activity_date",
+  "description",
+  "done_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "activity_type",
+   "label": "Activity Type",
+   "fieldtype": "Select",
+   "options": "Call\nSMS\nWhatsApp\nEmail\nVisit\nNote",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "activity_date",
+   "label": "Date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "done_by",
+   "label": "Done By",
+   "fieldtype": "Link",
+   "options": "User"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "permissions": []
+}

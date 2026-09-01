@@ -1,0 +1,74 @@
+{
+ "doctype": "DocType",
+ "name": "Sales Settings",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 1,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "default_commission_type",
+  "default_commission_rate",
+  "column_break_1",
+  "default_reservation_validity_days",
+  "default_discount_limit_salesperson",
+  "default_discount_limit_branch_manager"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_commission_type",
+   "label": "Default Commission Type",
+   "fieldtype": "Select",
+   "options": "Percentage\nFixed\nGross-Profit-Based\nTiered",
+   "default": "Gross-Profit-Based"
+  },
+  {
+   "fieldname": "default_commission_rate",
+   "label": "Default Commission Rate (%)",
+   "fieldtype": "Percent",
+   "default": "5"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_reservation_validity_days",
+   "label": "Default Reservation Validity (Days)",
+   "fieldtype": "Int",
+   "default": "3"
+  },
+  {
+   "fieldname": "default_discount_limit_salesperson",
+   "label": "Salesperson Max Discount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "default_discount_limit_branch_manager",
+   "label": "Branch Manager Max Discount",
+   "fieldtype": "Currency"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

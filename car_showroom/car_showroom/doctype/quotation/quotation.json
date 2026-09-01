@@ -1,0 +1,193 @@
+{
+ "doctype": "DocType",
+ "name": "Quotation",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "customer",
+  "vehicle",
+  "branch",
+  "salesperson",
+  "column_break_1",
+  "quotation_date",
+  "valid_till",
+  "status",
+  "section_break_pricing",
+  "cash_price",
+  "discount",
+  "trade_in",
+  "trade_in_value",
+  "column_break_2",
+  "deposit",
+  "financing_required",
+  "insurance",
+  "transfer_fee",
+  "other_fees",
+  "section_break_total",
+  "total_payable",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "label": "Vehicle",
+   "fieldtype": "Link",
+   "options": "Vehicle",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "branch",
+   "label": "Branch",
+   "fieldtype": "Link",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "salesperson",
+   "label": "Salesperson",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation_date",
+   "label": "Quotation Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valid_till",
+   "label": "Valid Till",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Draft\nSent\nAccepted\nRejected\nExpired",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_pricing",
+   "label": "Pricing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cash_price",
+   "label": "Cash Price",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "discount",
+   "label": "Discount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "trade_in",
+   "label": "Trade-In",
+   "fieldtype": "Link",
+   "options": "Trade-In"
+  },
+  {
+   "fieldname": "trade_in_value",
+   "label": "Trade-In Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deposit",
+   "label": "Deposit",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "financing_required",
+   "label": "Financing Required",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "insurance",
+   "label": "Insurance",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "transfer_fee",
+   "label": "Transfer Fee",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "other_fees",
+   "label": "Other Fees",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "section_break_total",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_payable",
+   "label": "Total Payable",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "QTN-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

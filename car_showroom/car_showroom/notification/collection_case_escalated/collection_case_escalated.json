@@ -1,0 +1,20 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Collection Case",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>Collection Case <strong>{{ doc.name }}</strong> for agreement {{ doc.hire_purchase_agreement }} ({{ doc.customer }}) has been escalated to <strong>{{ doc.status }}</strong>, {{ doc.days_overdue }} days overdue, outstanding {{ doc.total_outstanding }}.</p>",
+ "module": "Car Showroom",
+ "name": "Collection Case Escalated",
+ "send_system_notification": 1,
+ "subject": "Collection Case {{ doc.name }} escalated to {{ doc.status }}",
+ "recipients": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "value_changed": "status",
+ "condition": "doc.status in (\"Escalated\", \"Repossession Recommended\")"
+}

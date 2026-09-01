@@ -1,42 +1,60 @@
-# Copyright (c) 2026, Wycliffs and contributors
+# Copyright (c) 2026, Car Showroom and contributors
 # For license information, please see license.txt
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import flt
+from frappe.utils import flt, nowdate, date_diff
 
 
 class HirePurchaseInstallment(Document):
-
-	def validate(self):
-		self.total = flt(self.principal) + flt(self.interest) + flt(self.fees)
-		self.balance = flt(self.total) - flt(self.amount_paid)
-
-		if self.status not in ("Waived", "Rescheduled"):
-			is_past_due = self.due_date and frappe.utils.getdate(self.due_date) < frappe.utils.getdate(frappe.utils.nowdate())
-
-			if flt(self.balance) <= 0:
-				self.status = "Paid"
-			elif is_past_due:
-				self.status = "Overdue"
-			elif flt(self.amount_paid) > 0:
-				self.status = "Partially Paid"
-			else:
-				self.status = "Pending"
+	pass
 
 
-def mark_overdue_installments():
-	"""Daily scheduled job: flip any Pending/Partially Paid installment whose
-	due date has passed to Overdue (re-saving re-runs validate(), which sets
-	the status based on balance and due_date)."""
-	candidates = frappe.get_all(
+def update_overdue_and_penalties():
+	"""Scheduled daily job: mark Due/Overdue installments and accrue penalties."""
+	settings = frappe.get_single("Finance Settings")
+	grace_days = settings.overdue_penalty_grace_days or 0
+
+	open_rows = frappe.get_all(
 		"Hire Purchase Installment",
-		filters={
-			"status": ("in", ["Pending", "Partially Paid"]),
-			"due_date": ("<", frappe.utils.nowdate()),
-		},
-		pluck="name",
+		filters={"status": ["in", ["Upcoming", "Due", "Overdue", "Partially Paid"]]},
+		fields=["name", "hire_purchase_agreement", "due_date", "amount_due", "amount_paid",
+				"penalty", "status"],
 	)
-	for name in candidates:
-		doc = frappe.get_doc("Hire Purchase Installment", name)
-		doc.save(ignore_permissions=True)
+
+	today = nowdate()
+	for row in open_rows:
+		days_overdue = date_diff(today, row.due_date)
+		outstanding = flt(row.amount_due) - flt(row.amount_paid)
+
+		if outstanding <= 0:
+			continue
+
+		if days_overdue < 0:
+			new_status = "Upcoming"
+		elif days_overdue == 0:
+			new_status = "Due"
+		elif days_overdue <= grace_days:
+			new_status = "Due"
+		else:
+			new_status = "Overdue"
+			product_rate = get_penalty_rate(row.hire_purchase_agreement)
+			if product_rate:
+				accrued = outstanding * flt(product_rate) / 100
+				frappe.db.set_value(
+					"Hire Purchase Installment", row.name, "penalty",
+					flt(row.penalty) + accrued, update_modified=False,
+				)
+
+		if new_status != row.status:
+			frappe.db.set_value("Hire Purchase Installment", row.name, "status", new_status,
+								 update_modified=False)
+
+	frappe.db.commit()
+
+
+def get_penalty_rate(agreement_name):
+	product = frappe.db.get_value("Hire Purchase Agreement", agreement_name, "financing_product")
+	if not product:
+		return 0
+	return frappe.db.get_value("Financing Product", product, "penalty_rate_percent") or 0

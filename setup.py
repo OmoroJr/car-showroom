@@ -5,9 +5,9 @@ with open("requirements.txt") as f:
 
 setup(
 	name="car_showroom",
-	version="0.1.0",
-	description="Car Dealership & Hire Purchase Management System for Mombasa, Kenya",
-	author="Wycliffs",
+	version="0.0.1",
+	description="Enterprise Car Dealership, Showroom, Vehicle Sales & Hire Purchase Management ERP",
+	author="Mombasa Auto Group",
 	author_email="admin@example.com",
 	packages=find_packages(),
 	zip_safe=False,

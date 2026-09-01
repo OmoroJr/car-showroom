@@ -1,0 +1,295 @@
+{
+ "doctype": "DocType",
+ "name": "Loan Restructure Request",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 1,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "hire_purchase_agreement",
+  "customer",
+  "customer_email",
+  "collection_case",
+  "column_break_1",
+  "request_date",
+  "status",
+  "section_break_reason",
+  "reason",
+  "reason_details",
+  "section_break_current",
+  "current_outstanding_balance",
+  "current_installment_amount",
+  "column_break_2",
+  "current_remaining_installments",
+  "arrears_amount",
+  "section_break_new",
+  "restructure_effective_date",
+  "new_term_months",
+  "new_frequency",
+  "column_break_3",
+  "new_interest_rate",
+  "waive_penalty",
+  "capitalize_arrears",
+  "section_break_result",
+  "new_principal",
+  "new_installment_amount",
+  "column_break_4",
+  "new_total_interest",
+  "new_total_payable",
+  "section_break_approval",
+  "approved_by",
+  "approval_date",
+  "section_break_notes",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customer_email",
+   "label": "Customer Email",
+   "fieldtype": "Data",
+   "options": "Email",
+   "fetch_from": "customer.email",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "collection_case",
+   "label": "Collection Case",
+   "fieldtype": "Link",
+   "options": "Collection Case"
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "request_date",
+   "label": "Request Date",
+   "fieldtype": "Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Draft\nPending Approval\nApproved\nRejected\nApplied",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_reason",
+   "label": "Reason",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reason",
+   "label": "Reason",
+   "fieldtype": "Select",
+   "options": "Payment Difficulty\nJob Loss\nBusiness Downturn\nMedical Emergency\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reason_details",
+   "label": "Details",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "section_break_current",
+   "label": "Current Position",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "current_outstanding_balance",
+   "label": "Current Outstanding Balance",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_installment_amount",
+   "label": "Current Installment Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_remaining_installments",
+   "label": "Remaining Installments",
+   "fieldtype": "Int",
+   "read_only": 1
+  },
+  {
+   "fieldname": "arrears_amount",
+   "label": "Arrears Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "description": "Total of Due / Overdue / Partially Paid installments as of today."
+  },
+  {
+   "fieldname": "section_break_new",
+   "label": "Restructured Terms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "restructure_effective_date",
+   "label": "Effective Date",
+   "fieldtype": "Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "new_term_months",
+   "label": "New Remaining Term (Months)",
+   "fieldtype": "Int",
+   "reqd": 1
+  },
+  {
+   "fieldname": "new_frequency",
+   "label": "New Installment Frequency",
+   "fieldtype": "Select",
+   "options": "Weekly\nBiweekly\nMonthly\nCustom",
+   "default": "Monthly"
+  },
+  {
+   "fieldname": "column_break_3",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "new_interest_rate",
+   "label": "New Annual Interest Rate (%)",
+   "fieldtype": "Percent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "waive_penalty",
+   "label": "Waive Accrued Penalty",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "capitalize_arrears",
+   "label": "Capitalize Arrears into New Principal",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "section_break_result",
+   "label": "New Schedule",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "new_principal",
+   "label": "New Principal",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_installment_amount",
+   "label": "New Installment Amount",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "new_total_interest",
+   "label": "New Total Interest",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_total_payable",
+   "label": "New Total Payable",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_approval",
+   "label": "Approval",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "label": "Approved By",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_date",
+   "label": "Approval Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_notes",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "amended_from",
+   "label": "Amended From",
+   "fieldtype": "Link",
+   "options": "Loan Restructure Request",
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "RESTR-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

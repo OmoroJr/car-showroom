@@ -1,0 +1,20 @@
+{
+ "channel": "System Notification",
+ "doctype": "Notification",
+ "document_type": "Hire Purchase Installment",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>Installment <strong>{{ doc.name }}</strong> on agreement <strong>{{ doc.hire_purchase_agreement }}</strong> is now overdue (due {{ doc.due_date }}, amount due {{ doc.amount_due }}, paid {{ doc.amount_paid }}).</p>",
+ "module": "Car Showroom",
+ "name": "Installment Overdue Alert",
+ "send_system_notification": 1,
+ "subject": "Installment {{ doc.name }} is now Overdue",
+ "recipients": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "value_changed": "status",
+ "condition": "doc.status == \"Overdue\""
+}

@@ -1,0 +1,20 @@
+{
+ "channel": "Email",
+ "doctype": "Notification",
+ "document_type": "Settlement Quotation",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>Dear Customer,</p><p>Your early settlement quotation <strong>{{ doc.name }}</strong> for agreement {{ doc.hire_purchase_agreement }} is ready. Settlement amount: <strong>{{ doc.settlement_amount }}</strong>, valid till {{ doc.valid_till }}.</p>",
+ "module": "Car Showroom",
+ "name": "Settlement Quotation Issued",
+ "send_system_notification": 0,
+ "subject": "Your vehicle settlement quotation is ready",
+ "recipients": [
+  {
+   "receiver_by_document_field": "customer_email"
+  }
+ ],
+ "value_changed": "status",
+ "condition": "doc.status == \"Issued\""
+}

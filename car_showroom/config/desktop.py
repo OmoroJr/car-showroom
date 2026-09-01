@@ -7,9 +7,9 @@ def get_data():
 			"module_name": "Car Showroom",
 			"category": "Modules",
 			"label": _("Car Showroom"),
-			"color": "#1F3A5F",
+			"color": "#e67e22",
 			"icon": "octicon octicon-car",
 			"type": "module",
-			"description": "Car Dealership & Hire Purchase Management",
+			"description": "Vehicle dealership, hire purchase and CRM management",
 		}
 	]

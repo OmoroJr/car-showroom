@@ -1,108 +1,89 @@
-# Copyright (c) 2026, Wycliffs and contributors
+# Copyright (c) 2026, Car Showroom and contributors
 # For license information, please see license.txt
 
 import frappe
-from frappe.utils import flt
-from frappe.website.website_generator import WebsiteGenerator
+from frappe.model.document import Document
+from frappe.utils import nowdate, date_diff, flt
 
 
-class Vehicle(WebsiteGenerator):
+class Vehicle(Document):
+	def autoname(self):
+		if not self.stock_number:
+			self.stock_number = make_stock_number(self)
+		self.name = self.stock_number
 
-	def validate(self):
-		self.set_stock_number()
-		self.calculate_costs()
-		self.set_route()
+	def before_insert(self):
+		if not self.date_acquired:
+			self.date_acquired = nowdate()
+		self._previous_status = None
 
-	def set_stock_number(self):
-		"""Auto-generate stock number as <branch_code>-<year>-<serial>, e.g. MSA-2026-00001."""
-		if self.stock_number:
-			return
-		if not self.branch:
-			return
-
-		branch_code = frappe.db.get_value("Dealership Branch", self.branch, "branch_code") or "STK"
-		year = frappe.utils.nowdate()[:4]
-		prefix = f"{branch_code}-{year}-"
-
-		last = frappe.db.sql(
-			"""
-			select stock_number from `tabVehicle`
-			where stock_number like %s
-			order by creation desc limit 1
-			""",
-			(prefix + "%",),
-		)
-		if last and last[0][0]:
-			try:
-				last_serial = int(last[0][0].split("-")[-1])
-			except ValueError:
-				last_serial = 0
+	def before_save(self):
+		# capture previous status before it's overwritten, for the status log
+		if not self.is_new():
+			previous = frappe.db.get_value("Vehicle", self.name, "status")
+			self._previous_status = previous if previous != self.status else None
 		else:
-			last_serial = 0
+			self._previous_status = None
 
-		self.stock_number = f"{prefix}{last_serial + 1:05d}"
-
-	def calculate_costs(self):
-		cost_fields = [
-			"purchase_price", "clearing_cost", "transport_cost", "repair_cost",
-			"inspection_cost", "insurance_cost", "other_costs",
-		]
-		upfront_cost = sum(flt(self.get(f)) for f in cost_fields)
-		posted_expenses = flt(frappe.db.sql(
-			"select coalesce(sum(amount), 0) from `tabVehicle Expense` where vehicle = %s",
-			(self.name,),
-		)[0][0]) if not self.is_new() else 0
-
-		self.total_cost = upfront_cost + posted_expenses
-
-		if self.asking_price:
-			self.expected_profit = flt(self.asking_price) - flt(self.total_cost)
-
-	def set_route(self):
-		"""Slug used for the public vehicle detail page, e.g.
-		vehicles/toyota-prado-2022-msa-2026-00001."""
-		if self.route:
-			return
-		base = "-".join(filter(None, [self.make, self.model, str(self.year or ""), self.stock_number]))
-		self.route = "vehicles/" + frappe.utils.scrub(base).replace("_", "-")
-
-	def get_context(self, context):
-		"""Powers templates/generators/vehicle.html for the public website."""
-		context.no_cache = 1
-		context.vehicle = self
-		context.cover_image = next(
-			(img.image for img in self.images if img.is_cover), self.images[0].image if self.images else None
-		)
-		context.similar_vehicles = frappe.get_all(
-			"Vehicle",
-			filters={
-				"make": self.make, "status": "Available", "is_published": 1,
-				"name": ("!=", self.name),
-			},
-			fields=["name", "route", "make", "model", "year", "asking_price"],
-			limit_page_length=4,
-		)
-		context.title = f"{self.make} {self.model} {self.year or ''}".strip()
+		recalculate_cost_and_profit(self)
+		update_days_in_stock_for_doc(self)
 
 	def on_update(self):
-		pass
+		if getattr(self, "_previous_status", None):
+			log_status_change(self)
 
 
-def validate_vehicle(doc, method=None):
-	"""Guard rules for Vehicle status transitions (business rules #1-#3).
+def make_stock_number(doc):
+	"""Generate a stock number like MSA-2026-00001, scoped per calendar year."""
+	from frappe.model.naming import make_autoname
 
-	- A vehicle cannot be sold twice: once Sold/Delivered, it can only move to
-	  Delivered or Returned (reversal), not back to Available/Reserved silently.
-	- A Reserved vehicle should not be marked Sold without the reservation
-	  being converted first (enforced fully once the Reservation doctype
-	  lands in a later phase; here we just prevent silently skipping status).
-	"""
-	if not doc.get("__islocal") and doc.has_value_changed("status"):
-		previous_status = frappe.db.get_value("Vehicle", doc.name, "status")
-		if previous_status in ("Sold", "Delivered") and doc.status in ("Available", "Reserved"):
-			frappe.throw(
-				frappe._(
-					"Vehicle {0} is already {1} and cannot be moved back to {2} directly. "
-					"Use a proper return/cancellation workflow instead."
-				).format(doc.name, previous_status, doc.status)
-			)
+	prefix = "MSA"
+	year = nowdate()[:4]
+	return make_autoname(f"{prefix}-{year}-.#####")
+
+
+def recalculate_cost_and_profit(doc):
+	total_cost = sum(flt(row.amount) for row in (doc.cost_entries or []))
+	doc.total_cost = total_cost
+
+	selling_price = flt(doc.asking_price) or flt(doc.market_price)
+	if selling_price:
+		doc.gross_profit = selling_price - total_cost
+		doc.gross_margin = (doc.gross_profit / selling_price * 100) if selling_price else 0
+	else:
+		doc.gross_profit = 0
+		doc.gross_margin = 0
+
+
+def update_days_in_stock_for_doc(doc):
+	if doc.date_acquired:
+		doc.days_in_stock = date_diff(nowdate(), doc.date_acquired)
+
+
+def log_status_change(doc):
+	frappe.get_doc({
+		"doctype": "Vehicle Status Log",
+		"vehicle": doc.name,
+		"previous_status": doc._previous_status,
+		"new_status": doc.status,
+		"changed_by": frappe.session.user,
+		"changed_on": frappe.utils.now_datetime(),
+	}).insert(ignore_permissions=True)
+
+
+def update_days_in_stock():
+	"""Scheduled daily job: refresh days_in_stock for all vehicles still in stock."""
+	in_stock_statuses = [
+		"Sourced", "Purchased", "In Transit", "At Port", "Under Clearing", "Cleared",
+		"At Yard", "Under Inspection", "Under Repair", "Ready for Sale", "Advertised",
+		"Reserved", "Consignment", "Wholesale",
+	]
+	vehicles = frappe.get_all(
+		"Vehicle",
+		filters={"status": ["in", in_stock_statuses], "date_acquired": ["is", "set"]},
+		fields=["name", "date_acquired"],
+	)
+	for v in vehicles:
+		days = date_diff(nowdate(), v.date_acquired)
+		frappe.db.set_value("Vehicle", v.name, "days_in_stock", days, update_modified=False)
+	frappe.db.commit()

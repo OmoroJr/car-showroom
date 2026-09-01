@@ -1,0 +1,97 @@
+{
+ "doctype": "DocType",
+ "name": "Credit Approval",
+ "module": "Car Showroom",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
+ "track_changes": 1,
+ "editable_grid": 0,
+ "field_order": [
+  "credit_application",
+  "approval_stage",
+  "approver",
+  "column_break_1",
+  "decision",
+  "decision_date",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "credit_application",
+   "label": "Credit Application",
+   "fieldtype": "Link",
+   "options": "Credit Application",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approval_stage",
+   "label": "Approval Stage",
+   "fieldtype": "Select",
+   "options": "Document Verification\nCredit Officer Review\nFinance Manager Review\nManagement Approval",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approver",
+   "label": "Approver",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "decision",
+   "label": "Decision",
+   "fieldtype": "Select",
+   "options": "Approved\nRejected\nReturned for Correction",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "decision_date",
+   "label": "Decision Date",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "label": "",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "label": "Remarks",
+   "fieldtype": "Text"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "autoname": "naming_series:",
+ "naming_series": "CAPR-.YYYY.-",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

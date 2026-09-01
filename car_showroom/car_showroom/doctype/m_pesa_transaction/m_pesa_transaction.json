@@ -5,38 +5,47 @@
  "custom": 0,
  "istable": 0,
  "issingle": 0,
- "editable_grid": 0,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 1,
  "track_changes": 1,
+ "editable_grid": 0,
  "field_order": [
+  "mpesa_receipt_number",
   "transaction_type",
+  "column_break_1",
   "phone_number",
   "amount",
-  "column_break_mt1",
-  "account_reference",
   "transaction_date",
+  "section_break_match",
+  "customer",
+  "hire_purchase_agreement",
+  "column_break_2",
+  "payment",
   "status",
-  "section_break_mt1",
-  "merchant_request_id",
-  "checkout_request_id",
-  "column_break_mt2",
-  "result_code",
-  "result_desc",
-  "section_break_mt2",
-  "mpesa_receipt_number",
-  "column_break_mt3",
-  "raw_callback_payload",
-  "section_break_mt3",
-  "linked_hire_purchase_payment",
-  "linked_vehicle_payment"
+  "section_break_payload",
+  "raw_payload"
  ],
  "fields": [
+  {
+   "fieldname": "mpesa_receipt_number",
+   "label": "M-Pesa Receipt Number",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
   {
    "fieldname": "transaction_type",
    "label": "Transaction Type",
    "fieldtype": "Select",
-   "in_list_view": 1,
-   "options": "STK Push\nC2B Paybill\nC2B Till"
+   "options": "STK Push\nC2B\nPayBill\nTill",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "label": "",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "phone_number",
@@ -48,18 +57,8 @@
    "fieldname": "amount",
    "label": "Amount",
    "fieldtype": "Currency",
+   "reqd": 1,
    "in_list_view": 1
-  },
-  {
-   "fieldname": "column_break_mt1",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "account_reference",
-   "label": "Account Reference",
-   "fieldtype": "Data",
-   "description": "Hire Purchase Agreement or Vehicle Sale name used as the account reference"
   },
   {
    "fieldname": "transaction_date",
@@ -67,91 +66,59 @@
    "fieldtype": "Datetime"
   },
   {
+   "fieldname": "section_break_match",
+   "label": "Matching",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "hire_purchase_agreement",
+   "label": "Hire Purchase Agreement",
+   "fieldtype": "Link",
+   "options": "Hire Purchase Agreement"
+  },
+  {
+   "fieldname": "column_break_2",
+   "label": "",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment",
+   "label": "Linked Payment",
+   "fieldtype": "Link",
+   "options": "Payment",
+   "read_only": 1
+  },
+  {
    "fieldname": "status",
    "label": "Status",
    "fieldtype": "Select",
+   "options": "Received\nMatched\nPosted\nUnmatched\nFailed",
+   "default": "Received",
    "in_list_view": 1,
-   "bold": 1,
-   "options": "Pending\nSuccess\nFailed\nCancelled",
-   "default": "Pending"
+   "in_standard_filter": 1
   },
   {
-   "fieldname": "section_break_mt1",
-   "label": "STK Push Details",
+   "fieldname": "section_break_payload",
+   "label": "Raw Payload",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "merchant_request_id",
-   "label": "Merchant Request ID",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "checkout_request_id",
-   "label": "Checkout Request ID",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "column_break_mt2",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "result_code",
-   "label": "Result Code",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "result_desc",
-   "label": "Result Description",
-   "fieldtype": "Small Text"
-  },
-  {
-   "fieldname": "section_break_mt2",
-   "label": "M-Pesa Confirmation",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "mpesa_receipt_number",
-   "label": "M-Pesa Receipt Number",
-   "fieldtype": "Data",
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "column_break_mt3",
-   "label": "",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "raw_callback_payload",
-   "label": "Raw Callback Payload",
+   "fieldname": "raw_payload",
+   "label": "Raw Payload",
    "fieldtype": "Code",
-   "options": "JSON",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_break_mt3",
-   "label": "Reconciliation",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "linked_hire_purchase_payment",
-   "label": "Linked Hire Purchase Payment",
-   "fieldtype": "Link",
-   "options": "Hire Purchase Payment",
-   "read_only": 1
-  },
-  {
-   "fieldname": "linked_vehicle_payment",
-   "label": "Linked Vehicle Payment",
-   "fieldtype": "Link",
-   "options": "Vehicle Payment",
-   "read_only": 1
+   "options": "JSON"
   }
  ],
- "sort_field": "creation",
+ "sort_field": "modified",
  "sort_order": "DESC",
- "autoname": "hash",
- "title_field": "phone_number",
+ "engine": "InnoDB",
+ "autoname": "field:mpesa_receipt_number",
  "permissions": [
   {
    "role": "System Manager",
@@ -159,25 +126,11 @@
    "write": 1,
    "create": 1,
    "delete": 1,
+   "report": 1,
+   "export": 1,
    "print": 1,
    "email": 1,
-   "export": 1,
-   "report": 1,
    "share": 1
-  },
-  {
-   "role": "Accountant",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
-  },
-  {
-   "role": "Cashier",
-   "read": 1,
-   "print": 1,
-   "export": 1,
-   "report": 1
   }
  ]
 }

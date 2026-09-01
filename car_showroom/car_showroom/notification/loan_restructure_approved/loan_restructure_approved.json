@@ -1,0 +1,20 @@
+{
+ "channel": "Email",
+ "doctype": "Notification",
+ "document_type": "Loan Restructure Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>Dear Customer,</p><p>Your restructure request <strong>{{ doc.name }}</strong> for agreement {{ doc.hire_purchase_agreement }} has been approved. New installment amount: {{ doc.new_installment_amount }}, effective {{ doc.restructure_effective_date }}.</p>",
+ "module": "Car Showroom",
+ "name": "Loan Restructure Approved",
+ "send_system_notification": 0,
+ "subject": "Your loan restructure request has been approved",
+ "recipients": [
+  {
+   "receiver_by_document_field": "customer_email"
+  }
+ ],
+ "value_changed": "status",
+ "condition": "doc.status == \"Approved\""
+}

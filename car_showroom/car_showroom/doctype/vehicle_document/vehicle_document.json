@@ -5,40 +5,55 @@
  "custom": 0,
  "istable": 1,
  "issingle": 0,
- "editable_grid": 1,
- "engine": "InnoDB",
+ "is_submittable": 0,
+ "is_tree": 0,
+ "quick_entry": 0,
  "track_changes": 0,
+ "editable_grid": 1,
  "field_order": [
   "document_type",
-  "attachment",
+  "document",
+  "issue_date",
   "expiry_date",
-  "notes"
+  "verification_status"
  ],
  "fields": [
   {
    "fieldname": "document_type",
    "label": "Document Type",
    "fieldtype": "Select",
+   "options": "Logbook\nImport Documents\nInspection Report\nInsurance\nValuation Report\nOther",
    "reqd": 1,
-   "options": "Logbook\nInsurance\nInspection Certificate\nImport Documents\nCustoms Documents\nKRA Documents\nNTSA Documents\nSale Agreement\nHire Purchase Agreement\nOther"
+   "in_list_view": 1
   },
   {
-   "fieldname": "attachment",
-   "label": "Attachment",
-   "fieldtype": "Attach"
+   "fieldname": "document",
+   "label": "Document",
+   "fieldtype": "Attach",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "issue_date",
+   "label": "Issue Date",
+   "fieldtype": "Date"
   },
   {
    "fieldname": "expiry_date",
    "label": "Expiry Date",
-   "fieldtype": "Date"
+   "fieldtype": "Date",
+   "in_list_view": 1
   },
   {
-   "fieldname": "notes",
-   "label": "Notes",
-   "fieldtype": "Small Text"
+   "fieldname": "verification_status",
+   "label": "Verification Status",
+   "fieldtype": "Select",
+   "options": "Pending\nVerified\nRejected",
+   "default": "Pending",
+   "in_list_view": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "engine": "InnoDB",
  "permissions": []
 }
