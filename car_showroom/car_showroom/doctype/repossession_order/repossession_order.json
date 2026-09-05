@@ -11,6 +11,7 @@
  "track_changes": 1,
  "editable_grid": 0,
  "field_order": [
+  "naming_series",
   "hire_purchase_agreement",
   "customer",
   "vehicle",
@@ -44,6 +45,16 @@
   "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Series",
+   "fieldtype": "Select",
+   "options": "REPO-.YYYY.-",
+   "default": "REPO-.YYYY.-",
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1
+  },
   {
    "fieldname": "hire_purchase_agreement",
    "label": "Hire Purchase Agreement",
@@ -233,7 +244,6 @@
  "sort_order": "DESC",
  "engine": "InnoDB",
  "autoname": "naming_series:",
- "naming_series": "REPO-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -245,7 +255,25 @@
    "export": 1,
    "print": 1,
    "email": 1,
-   "share": 1
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Collections Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
   }
  ]
 }

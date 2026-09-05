@@ -11,6 +11,7 @@
  "track_changes": 1,
  "editable_grid": 0,
  "field_order": [
+  "naming_series",
   "customer",
   "vehicle",
   "quotation",
@@ -26,6 +27,16 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Series",
+   "fieldtype": "Select",
+   "options": "CREDAPP-.YYYY.-",
+   "default": "CREDAPP-.YYYY.-",
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1
+  },
   {
    "fieldname": "customer",
    "label": "Customer",
@@ -114,7 +125,6 @@
  "sort_order": "DESC",
  "engine": "InnoDB",
  "autoname": "naming_series:",
- "naming_series": "CREDAPP-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -124,6 +134,24 @@
    "delete": 1,
    "report": 1,
    "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Officer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "report": 1,
    "print": 1,
    "email": 1,
    "share": 1

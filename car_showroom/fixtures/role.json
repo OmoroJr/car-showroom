@@ -1,0 +1,51 @@
+[
+ {
+  "doctype": "Role",
+  "name": "Sales User",
+  "role_name": "Sales User",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Sales Manager",
+  "role_name": "Sales Manager",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Finance Officer",
+  "role_name": "Finance Officer",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Finance Manager",
+  "role_name": "Finance Manager",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Cashier / Accounts",
+  "role_name": "Cashier / Accounts",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Collections Officer",
+  "role_name": "Collections Officer",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Collections Manager",
+  "role_name": "Collections Manager",
+  "desk_access": 1,
+  "disabled": 0
+ }
+]

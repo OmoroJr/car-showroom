@@ -11,6 +11,7 @@
  "track_changes": 1,
  "editable_grid": 0,
  "field_order": [
+  "naming_series",
   "vehicle",
   "customer",
   "branch",
@@ -38,6 +39,16 @@
   "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Series",
+   "fieldtype": "Select",
+   "options": "VS-.YYYY.-",
+   "default": "VS-.YYYY.-",
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1
+  },
   {
    "fieldname": "vehicle",
    "label": "Vehicle",
@@ -204,7 +215,6 @@
  "sort_order": "DESC",
  "engine": "InnoDB",
  "autoname": "naming_series:",
- "naming_series": "SALE-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
@@ -216,7 +226,35 @@
    "export": 1,
    "print": 1,
    "email": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Sales User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "print": 1,
+   "email": 1,
    "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
   }
  ]
 }

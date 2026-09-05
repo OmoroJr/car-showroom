@@ -11,6 +11,7 @@
  "track_changes": 1,
  "editable_grid": 0,
  "field_order": [
+  "naming_series",
   "customer",
   "vehicle",
   "branch",
@@ -36,6 +37,16 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "naming_series",
+   "label": "Series",
+   "fieldtype": "Select",
+   "options": "QTN-.YYYY.-",
+   "default": "QTN-.YYYY.-",
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1
+  },
   {
    "fieldname": "customer",
    "label": "Customer",
@@ -175,10 +186,31 @@
  "sort_order": "DESC",
  "engine": "InnoDB",
  "autoname": "naming_series:",
- "naming_series": "QTN-.YYYY.-",
  "permissions": [
   {
    "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
    "read": 1,
    "write": 1,
    "create": 1,

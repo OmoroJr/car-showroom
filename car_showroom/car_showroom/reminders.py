@@ -32,7 +32,7 @@ SCENARIOS = [
 def send_payment_reminders():
 	"""Daily scheduled job: find installments matching each reminder
 	scenario and send a reminder on every enabled channel, once per day."""
-	settings = frappe.get_single("Car Showroom Notification Settings")
+	settings = frappe.get_single("Notification Settings")
 	today = getdate(nowdate())
 
 	for scenario_label, offset, template_field in SCENARIOS:
@@ -119,7 +119,7 @@ def send_email(email, subject, message):
 def send_sms(phone_number, message, settings=None):
 	"""Generic SMS gateway call, defaulting to Africa's Talking's HTTP API.
 	Swap the request shape here if you use a different provider."""
-	settings = settings or frappe.get_single("Car Showroom Notification Settings")
+	settings = settings or frappe.get_single("Notification Settings")
 
 	if settings.sms_provider == "Africa's Talking":
 		response = requests.post(
@@ -147,7 +147,7 @@ def send_whatsapp(phone_number, message, settings=None):
 	"""Generic WhatsApp gateway call. Twilio and Meta Cloud API have
 	different request shapes; both are sketched here — keep only the one
 	you use."""
-	settings = settings or frappe.get_single("Car Showroom Notification Settings")
+	settings = settings or frappe.get_single("Notification Settings")
 
 	if settings.whatsapp_provider == "Twilio":
 		response = requests.post(

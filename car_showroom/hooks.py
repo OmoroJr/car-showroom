@@ -34,13 +34,12 @@ app_license = "MIT"
 # Document Events
 # ---------------
 # Hook on document methods and events
-
-doc_events = {
-	"Vehicle": {
-		"before_save": "car_showroom.car_showroom.doctype.vehicle.vehicle.before_save",
-		"on_update": "car_showroom.car_showroom.doctype.vehicle.vehicle.on_update",
-	}
-}
+# Note: Vehicle's before_save/on_update are already implemented as controller
+# methods on the Vehicle class (car_showroom/doctype/vehicle/vehicle.py) and
+# fire automatically — they do not need (and must not have) doc_events entries
+# here, since those are module-level functions, not class methods, and would
+# fail to resolve.
+# doc_events = {}
 
 # Scheduled Tasks
 # ---------------
@@ -57,7 +56,24 @@ scheduler_events = {
 
 # Fixtures
 # --------
-# fixtures = []
+# Ships the custom roles referenced in doctype permissions (Sales User,
+# Sales Manager, Finance Officer, Finance Manager, Cashier / Accounts,
+# Collections Officer, Collections Manager) so `bench migrate` creates them
+# automatically. Without this, the permission rows on doctypes reference
+# roles that don't exist on the site and nobody can be assigned to them.
+fixtures = [
+	{
+		"doctype": "Role",
+		"filters": [
+			["role_name", "in", [
+				"Sales User", "Sales Manager",
+				"Finance Officer", "Finance Manager",
+				"Cashier / Accounts",
+				"Collections Officer", "Collections Manager",
+			]]
+		]
+	}
+]
 
 # Testing
 # -------
