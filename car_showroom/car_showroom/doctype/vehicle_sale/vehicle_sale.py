@@ -1,6 +1,3 @@
-# Copyright (c) 2026, Car Showroom and contributors
-# For license information, please see license.txt
-
 import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
@@ -36,11 +33,26 @@ class VehicleSale(Document):
 		self.net_sale_price = (
 			flt(self.cash_price) - flt(self.discount) - flt(self.trade_in_value)
 		)
-		self.balance = flt(self.net_sale_price) - flt(self.deposit)
+		total_received = flt(self.deposit) + self.get_total_payments()
+		self.balance = flt(self.net_sale_price) - total_received
 		self.gross_profit = flt(self.net_sale_price) - flt(self.vehicle_cost)
 		self.gross_margin = (
 			(self.gross_profit / self.net_sale_price * 100) if self.net_sale_price else 0
 		)
+
+		if self.docstatus == 1:
+			if self.balance <= 0 and self.status == "Awaiting Payment":
+				self.status = "Awaiting Transfer"
+			elif self.balance > 0 and self.status == "Awaiting Transfer":
+				self.status = "Awaiting Payment"
+
+	def get_total_payments(self):
+		if not self.name:
+			return 0
+		return flt(frappe.db.sql(
+			"select sum(amount) from `tabVehicle Payment` where sale = %s and docstatus = 1",
+			(self.name,),
+		)[0][0] or 0)
 
 	def on_submit(self):
 		if self.status == "Draft":
